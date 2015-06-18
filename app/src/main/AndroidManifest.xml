@@ -3,6 +3,7 @@
     package="com.zhang.mydemo" >
 
     <application
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,6 +21,10 @@
         <activity
             android:name=".actionbar.MyActionBarActivity"
             android:label="@string/title_activity_my_action_bar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".actionbar.DebugActivity"
@@ -40,6 +45,14 @@
         <activity
             android:name=".actionbar.StandardNavigationActionBarActivity"
             android:label="@string/title_activity_standard_navigation_action_bar" >
+        </activity>
+        <activity
+            android:name=".stickyGridHeaders.StickyGridHeadsActivity"
+            android:label="@string/title_activity_sticky_grid_heads" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE"/>
+            </intent-filter>
         </activity>
     </application>
 

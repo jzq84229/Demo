@@ -15,7 +15,7 @@ public class GridItem {
     /**
      * 每个Item对应的HeaderId
      */
-    private int headerId;
+    private int section;
     public GridItem(String path, String time){
         this.path = path;
         this.time = time;
@@ -29,12 +29,12 @@ public class GridItem {
         this.path = path;
     }
 
-    public int getHeaderId() {
-        return headerId;
+    public int getSection() {
+        return section;
     }
 
-    public void setHeaderId(int headerId) {
-        this.headerId = headerId;
+    public void setSection(int section) {
+        this.section = section;
     }
 
     public String getTime() {

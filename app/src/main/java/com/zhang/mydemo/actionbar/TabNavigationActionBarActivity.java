@@ -9,6 +9,11 @@ import android.view.MenuItem;
 import com.zhang.mydemo.R;
 
 public class TabNavigationActionBarActivity extends BaseActionBarActivity {
+    @Override
+    protected boolean onMenuItemSelected(MenuItem item) {
+        return false;
+    }
+
     private static String tag = "Tab Navigation ActionBarActivity";
 
     public TabNavigationActionBarActivity(String inTag) {

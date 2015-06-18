@@ -24,42 +24,42 @@ public abstract class BaseActionBarActivity extends DebugActivity {
         tv.setText(tag);
     }
 
-    @Override
-    public boolean onMenuItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home){
-            this.reportBack(tag, "Home pressed");
-            return true;
-        }
-
-        if (item.getItemId() == R.id.menu_invoke_tabnav){
-            if (getNavMode() == ActionBar.NAVIGATION_MODE_TABS){
-                this.reportBack(tag, "You are already in tab nav");
-            } else {
-                this.invokeTabNav();
-            }
-            return true;
-        }
-
-        if (item.getItemId() == R.id.menu_invoke_listNav){
-            if (getNavMode() == ActionBar.NAVIGATION_MODE_LIST){
-                this.reportBack(tag, "You are already in list nav");
-            } else {
-                this.invokeListNav();
-            }
-            return true;
-        }
-
-        if (item.getItemId() == R.id.menu_invoke_standardnav){
-            if (getNavMode() == ActionBar.NAVIGATION_MODE_STANDARD){
-                this.reportBack(tag, "You are already in standard nav");
-            } else {
-                this.invokeStandardNav();
-            }
-            return true;
-        }
-
-        return false;
-    }
+//    @Override
+//    public boolean onMenuItemSelected(MenuItem item) {
+//        if (item.getItemId() == android.R.id.home){
+//            this.reportBack(tag, "Home pressed");
+//            return true;
+//        }
+//
+//        if (item.getItemId() == R.id.menu_invoke_tabnav){
+//            if (getNavMode() == ActionBar.NAVIGATION_MODE_TABS){
+//                this.reportBack(tag, "You are already in tab nav");
+//            } else {
+//                this.invokeTabNav();
+//            }
+//            return true;
+//        }
+//
+//        if (item.getItemId() == R.id.menu_invoke_listNav){
+//            if (getNavMode() == ActionBar.NAVIGATION_MODE_LIST){
+//                this.reportBack(tag, "You are already in list nav");
+//            } else {
+//                this.invokeListNav();
+//            }
+//            return true;
+//        }
+//
+//        if (item.getItemId() == R.id.menu_invoke_standardnav){
+//            if (getNavMode() == ActionBar.NAVIGATION_MODE_STANDARD){
+//                this.reportBack(tag, "You are already in standard nav");
+//            } else {
+//                this.invokeStandardNav();
+//            }
+//            return true;
+//        }
+//
+//        return false;
+//    }
 
     private int getNavMode(){
         ActionBar bar = this.getActionBar();

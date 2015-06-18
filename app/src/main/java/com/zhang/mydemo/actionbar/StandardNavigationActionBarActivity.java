@@ -21,7 +21,7 @@ public class StandardNavigationActionBarActivity extends BaseActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_standard_navigation_action_bar);
+//        setContentView(R.layout.activity_standard_navigation_action_bar);
     }
 
 

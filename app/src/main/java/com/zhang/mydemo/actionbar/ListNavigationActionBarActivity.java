@@ -21,7 +21,7 @@ public class ListNavigationActionBarActivity extends BaseActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_navigation_action_bar);
+//        setContentView(R.layout.activity_list_navigation_action_bar);
     }
 
 

@@ -12,4 +12,5 @@
     <string name="title_activity_standard_navigation_action_bar">
         StandardNavigationActionBarActivity
     </string>
+    <string name="title_activity_sticky_grid_heads">StickyGridHeadsActivity</string>
 </resources>
