@@ -1,10 +1,15 @@
 package com.zhang.mydemo.actionbar;
 
 import android.app.ActionBar;
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.zhang.mydemo.R;
@@ -24,42 +29,49 @@ public abstract class BaseActionBarActivity extends DebugActivity {
         tv.setText(tag);
     }
 
-//    @Override
-//    public boolean onMenuItemSelected(MenuItem item) {
-//        if (item.getItemId() == android.R.id.home){
-//            this.reportBack(tag, "Home pressed");
-//            return true;
-//        }
-//
-//        if (item.getItemId() == R.id.menu_invoke_tabnav){
-//            if (getNavMode() == ActionBar.NAVIGATION_MODE_TABS){
-//                this.reportBack(tag, "You are already in tab nav");
-//            } else {
-//                this.invokeTabNav();
-//            }
-//            return true;
-//        }
-//
-//        if (item.getItemId() == R.id.menu_invoke_listNav){
-//            if (getNavMode() == ActionBar.NAVIGATION_MODE_LIST){
-//                this.reportBack(tag, "You are already in list nav");
-//            } else {
-//                this.invokeListNav();
-//            }
-//            return true;
-//        }
-//
-//        if (item.getItemId() == R.id.menu_invoke_standardnav){
-//            if (getNavMode() == ActionBar.NAVIGATION_MODE_STANDARD){
-//                this.reportBack(tag, "You are already in standard nav");
-//            } else {
-//                this.invokeStandardNav();
-//            }
-//            return true;
-//        }
-//
-//        return false;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        this.setupSearcherView(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onMenuItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            this.reportBack(tag, "Home pressed");
+            return true;
+        }
+
+        if (item.getItemId() == R.id.menu_invoke_tabnav){
+            if (getNavMode() == ActionBar.NAVIGATION_MODE_TABS){
+                this.reportBack(tag, "You are already in tab nav");
+            } else {
+                this.invokeTabNav();
+            }
+            return true;
+        }
+
+        if (item.getItemId() == R.id.menu_invoke_listnav){
+            if (getNavMode() == ActionBar.NAVIGATION_MODE_LIST){
+                this.reportBack(tag, "You are already in list nav");
+            } else {
+                this.invokeListNav();
+            }
+            return true;
+        }
+
+        if (item.getItemId() == R.id.menu_invoke_standardnav){
+            if (getNavMode() == ActionBar.NAVIGATION_MODE_STANDARD){
+                this.reportBack(tag, "You are already in standard nav");
+            } else {
+                this.invokeStandardNav();
+            }
+            return true;
+        }
+
+        return false;
+    }
 
     private int getNavMode(){
         ActionBar bar = this.getActionBar();
@@ -79,5 +91,23 @@ public abstract class BaseActionBarActivity extends DebugActivity {
     private void invokeStandardNav(){
         Intent i = new Intent(this, StandardNavigationActionBarActivity.class);
         startActivity(i);
+    }
+
+    private void setupSearcherView(Menu menu) {
+        SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+        if (searchView == null) {
+            this.reportBack(tag, "Failed to get search view");
+            return;
+        }
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        ComponentName cn = new ComponentName(this, SearchResultsActivity.class);
+        SearchableInfo info = searchManager.getSearchableInfo(cn);
+        if (info == null) {
+            this.reportBack(tag, "Failed to get search info");
+            return;
+        }
+        searchView.setSearchableInfo(info);
+
+        searchView.setIconifiedByDefault(false);
     }
 }

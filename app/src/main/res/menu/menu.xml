@@ -2,6 +2,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.zhang.mydemo.stickyGridHeaders.StickyGridHeadsActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+
+    <group android:id="@+id/menuGroup_Main">
+        <item android:id="@+id/menu_search"
+            android:title="Search"
+            app:showAsAction="ifRoom"
+            android:actionViewClass="android.widget.SearchView"/>
+        <item android:id="@+id/menu_action_icon1"
+            android:title="Action icon1"
+            android:icon="@drawable/ic_launcher"
+            app:showAsAction="ifRoom"/>
+
+        <item android:id="@+id/menu_action_icon2"
+            android:title="Action Icon2"
+            android:icon="@drawable/ic_launcher"
+            app:showAsAction="ifRoom"/>
+
+        <item android:id="@+id/menu_icon_test"
+            android:title="Icon Test"
+            android:icon="@drawable/ic_launcher"/>
+
+        <item android:id="@+id/menu_invoke_listnav"
+            android:title="Invoke List Nav"/>
+
+        <item android:id="@+id/menu_invoke_standardnav"
+            android:title="Invoke Standard Nav"/>
+
+        <item android:id="@+id/menu_invoke_tabnav"
+            android:title="Invoke Tab Nav" />
+
+        <item android:id="@+id/menu_da_clear"
+            android:orderInCategory="10"
+            android:title="clear"/>
+    </group>
 </menu>

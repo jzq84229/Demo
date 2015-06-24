@@ -13,4 +13,8 @@
         StandardNavigationActionBarActivity
     </string>
     <string name="title_activity_sticky_grid_heads">StickyGridHeadsActivity</string>
+    <string name="title_activity_search_results">SearchResultsActivity</string>
+
+    <string name="slabel">Search Label</string>
+    <string name="shint">Search Hint</string>
 </resources>

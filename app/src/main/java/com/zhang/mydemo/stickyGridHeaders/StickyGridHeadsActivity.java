@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.GridView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+import com.tonicartos.widget.stickygridheaders.StickyGridHeadersGridView;
 import com.zhang.mydemo.R;
 
 import java.text.SimpleDateFormat;
@@ -29,7 +32,7 @@ public class StickyGridHeadsActivity extends Activity {
      * 图片扫描器
      */
     private ImageScanner mScanner;
-    private GridView mGridView;
+    private StickyGridHeadersGridView mGridView;
 
     /**
      * 没有HeadId的List
@@ -43,7 +46,9 @@ public class StickyGridHeadsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sticky_grid_heads);
 
-        mGridView = (GridView) findViewById(R.id.asset_grid);
+        mGridView = (StickyGridHeadersGridView) findViewById(R.id.asset_grid);
+        mGridView.setAreHeadersSticky(false);
+        mGridView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), false, true));
         mScanner = new ImageScanner(this);
 
         mScanner.scanImages(new ImageScanner.ScanCompleteCallBack() {

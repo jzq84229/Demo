@@ -1,28 +1,19 @@
 package com.zhang.mydemo.actionbar;
 
 import android.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import com.zhang.mydemo.R;
+import android.view.Window;
 
 public class TabNavigationActionBarActivity extends BaseActionBarActivity {
-    @Override
-    protected boolean onMenuItemSelected(MenuItem item) {
-        return false;
-    }
-
     private static String tag = "Tab Navigation ActionBarActivity";
 
-    public TabNavigationActionBarActivity(String inTag) {
-        super(inTag);
+    public TabNavigationActionBarActivity() {
+        super(tag);
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
         workwithTabbedActionBar();
     }

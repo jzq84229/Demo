@@ -1,8 +1,8 @@
 package com.zhang.mydemo.actionbar;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,6 +33,8 @@ public abstract class DebugActivity extends Activity implements IReportBack {
         super.onCreate(savedInstanceState);
         setContentView(this.layoutid);
 
+        TextView tv = this.getTextView();
+        tv.setMovementMethod(ScrollingMovementMethod.getInstance());
     }
 
 
@@ -46,29 +48,29 @@ public abstract class DebugActivity extends Activity implements IReportBack {
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        //noinspection SimplifiableIfStatement
-////        if (id == R.id.action_settings) {
-////            return true;
-////        }
-////
-////        return super.onOptionsItemSelected(item);
-//        appendMenuItemText(item);
-//        if (item.getItemId() == R.id.menu_da_clear) {
-//            this.emptyText();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
 //            return true;
 //        }
-//        boolean b = onMenuItemSelected(item);
-//        if (b == true){
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
 //
-//    }
+//        return super.onOptionsItemSelected(item);
+        appendMenuItemText(item);
+        if (item.getItemId() == R.id.menu_da_clear) {
+            this.emptyText();
+            return true;
+        }
+        boolean b = onMenuItemSelected(item);
+        if (b == true){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
 
     protected TextView getTextView(){
         return (TextView) this.findViewById(this.debugTextViewId);
