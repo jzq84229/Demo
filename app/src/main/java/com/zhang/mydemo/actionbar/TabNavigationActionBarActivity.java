@@ -1,7 +1,7 @@
 package com.zhang.mydemo.actionbar;
 
-import android.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.Window;
 
 public class TabNavigationActionBarActivity extends BaseActionBarActivity {
@@ -19,7 +19,7 @@ public class TabNavigationActionBarActivity extends BaseActionBarActivity {
     }
 
     public void workwithTabbedActionBar(){
-        ActionBar bar = this.getActionBar();
+        ActionBar bar = this.getSupportActionBar();
         bar.setTitle(tag);
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 

@@ -2,10 +2,8 @@ package com.zhang.mydemo.actionbar;
 
 import android.app.SearchManager;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.zhang.mydemo.R;

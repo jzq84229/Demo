@@ -17,4 +17,11 @@
 
     <string name="slabel">Search Label</string>
     <string name="shint">Search Hint</string>
+    <string name="title_activity_contextual_action_bar">ContextualActionBarActivity</string>
+    <string name="title_activity_tab_navigation">TabNavigationActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

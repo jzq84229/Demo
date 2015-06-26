@@ -2,6 +2,7 @@ package com.zhang.mydemo.actionbar;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 
 import com.zhang.mydemo.R;
 
-public abstract class DebugActivity extends Activity implements IReportBack {
+public abstract class DebugActivity extends AppCompatActivity implements IReportBack {
 
     protected abstract boolean onMenuItemSelected(MenuItem item);
 

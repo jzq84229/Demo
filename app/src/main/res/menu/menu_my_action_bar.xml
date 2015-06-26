@@ -1,0 +1,54 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.zhang.mydemo.actionbartest.MyActionBarActivity">
+    <item
+        android:id="@+id/menu_share"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
+        app:showAsAction="ifRoom"
+        android:title="share" />
+    <group android:menuCategory="alternative">
+        <item
+            android:id="@+id/menu_settings"
+            android:title="@string/action_settings"
+            android:orderInCategory="101"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/action_refresh"
+            android:icon="@drawable/ic_launcher"
+            android:orderInCategory="100"
+            app:showAsAction="always|withText"
+            android:title="refresh"/>
+        <item
+            android:id="@+id/action_about"
+            android:icon="@drawable/ic_launcher"
+            android:orderInCategory="102"
+            app:showAsAction="ifRoom"
+            android:title="about"/>
+    </group>
+    <group android:menuCategory="container">
+        <item
+            android:id="@+id/action_edit"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:orderInCategory="103"
+            app:showAsAction="ifRoom"
+            android:title="edit"/>
+        <item
+            android:id="@+id/action_contextual"
+            android:icon="@drawable/ic_launcher"
+            android:orderInCategory="105"
+            app:showAsAction="never"
+            android:title="contextual"/>
+        <item
+            android:id="@+id/action_tab"
+            app:showAsAction="never"
+            android:orderInCategory="106"
+            android:title="tab"/>
+        <item
+            android:id="@+id/action_email"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:orderInCategory="104"
+            app:showAsAction="ifRoom"
+            android:title="email"/>
+    </group>
+</menu>

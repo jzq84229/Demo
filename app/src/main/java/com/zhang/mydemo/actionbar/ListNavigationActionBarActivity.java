@@ -1,7 +1,7 @@
 package com.zhang.mydemo.actionbar;
 
-import android.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 
 public class ListNavigationActionBarActivity extends BaseActionBarActivity {
 
@@ -17,7 +17,7 @@ public class ListNavigationActionBarActivity extends BaseActionBarActivity {
     }
 
     public void workwithListActionBar(){
-        ActionBar bar = this.getActionBar();
+        ActionBar bar = this.getSupportActionBar();
         bar.setTitle(tag);
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         bar.setListNavigationCallbacks(new SimpleSpinnerArrayAdapter(this),

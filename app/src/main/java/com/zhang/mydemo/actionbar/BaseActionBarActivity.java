@@ -1,18 +1,21 @@
 package com.zhang.mydemo.actionbar;
 
-import android.app.ActionBar;
 import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewConfiguration;
 import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.zhang.mydemo.R;
+
+import java.lang.reflect.Field;
 
 public abstract class BaseActionBarActivity extends DebugActivity {
 
@@ -27,6 +30,22 @@ public abstract class BaseActionBarActivity extends DebugActivity {
         super.onCreate(savedInstanceState);
         TextView tv = getTextView();
         tv.setText(tag);
+        getOverflowMenu();
+    }
+
+    private void getOverflowMenu() {
+        try {
+            ViewConfiguration config = ViewConfiguration.get(this);
+            Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+            if (menuKeyField != null) {
+                menuKeyField.setAccessible(true);
+                menuKeyField.setBoolean(config, false);
+            }
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -74,7 +93,7 @@ public abstract class BaseActionBarActivity extends DebugActivity {
     }
 
     private int getNavMode(){
-        ActionBar bar = this.getActionBar();
+        ActionBar bar = this.getSupportActionBar();
         return bar.getNavigationMode();
     }
 
