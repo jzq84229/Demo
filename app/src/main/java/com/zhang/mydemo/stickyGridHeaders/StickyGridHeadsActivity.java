@@ -1,15 +1,14 @@
 package com.zhang.mydemo.stickyGridHeaders;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.widget.GridView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.tonicartos.widget.stickygridheaders.StickyGridHeadersGridView;
+import com.zhang.mydemo.BaseActivity;
 import com.zhang.mydemo.R;
 
 import java.text.SimpleDateFormat;
@@ -26,7 +25,7 @@ import java.util.TimeZone;
  * 测试StickyGridHeads的使用
  * 参考实现http://blog.csdn.net/xiaanming/article/details/20481185
  */
-public class StickyGridHeadsActivity extends Activity {
+public class StickyGridHeadsActivity extends BaseActivity {
     private ProgressDialog mProgressDialog;
     /**
      * 图片扫描器
@@ -41,7 +40,7 @@ public class StickyGridHeadsActivity extends Activity {
     private static int section = 1;
     private Map<String, Integer> sectionMap = new HashMap<>();
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sticky_grid_heads);
@@ -96,6 +95,80 @@ public class StickyGridHeadsActivity extends Activity {
 //                mGridView.setAdapter(new StickyGridAdatper(StickyGridHeadsActivity.this, hasHeadIdList, mGridView));
             }
         });
+    }*/
+
+    @Override
+    public void setContent() {
+        setContentView(R.layout.activity_sticky_grid_heads);
+    }
+
+    @Override
+    public void findViews() {
+        mGridView = (StickyGridHeadersGridView) findViewById(R.id.asset_grid);
+        mGridView.setAreHeadersSticky(false);
+        mGridView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), false, true));
+
+    }
+
+    @Override
+    public void setData() {
+        mScanner = new ImageScanner(this);
+
+        mScanner.scanImages(new ImageScanner.ScanCompleteCallBack() {
+            {
+                mProgressDialog = ProgressDialog.show(StickyGridHeadsActivity.this, null, "正在加载……");
+            }
+
+            @Override
+            public void scanComplete(Cursor cursor) {
+                imageScanComplete(cursor);
+            }
+        });
+    }
+
+    @Override
+    public void showContent() {
+
+    }
+
+    private void imageScanComplete(Cursor cursor){
+        //关闭进度条
+        mProgressDialog.dismiss();
+
+        if (cursor == null) {
+            return;
+        }
+
+        while (cursor.moveToNext()) {
+            //获取图片的路径
+            String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+            //获取图片的添加到系统的毫秒数
+            long time = cursor.getLong(cursor.getColumnIndex(MediaStore.Images.Media.DATE_ADDED));
+            GridItem mGridItem = new GridItem(path, parseTimeToYMD(time, "yyyy年MM月dd日"));
+            mGridList.add(mGridItem);
+        }
+        cursor.close();
+        Collections.sort(mGridList, new YMDComparator());
+
+        for (ListIterator<GridItem> it = mGridList.listIterator(); it.hasNext(); ) {
+            GridItem mGridItem = it.next();
+            String ym = mGridItem.getTime();
+            if (!sectionMap.containsKey(ym)) {
+                mGridItem.setSection(section);
+                sectionMap.put(ym, section);
+                section++;
+            } else {
+                mGridItem.setSection(sectionMap.get(ym));
+            }
+        }
+        mGridView.setAdapter(new StickyGridAdatper(StickyGridHeadsActivity.this, mGridList, mGridView));
+
+//                //给GridView的item的数据生成HeaderId
+//                List<GridItem> hasHeadIdList = generateHeaderId(mGridList);
+//                //排序
+//                Collections.sort(hasHeadIdList, new YMDComparator());
+//                mGridView.setAdapter(new StickyGridAdatper(StickyGridHeadsActivity.this, hasHeadIdList, mGridView));
+
     }
 
     /**
