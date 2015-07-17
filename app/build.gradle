@@ -31,16 +31,16 @@ android {
 
     signingConfigs {
         debug{
-            keyAlias 'MyDemo'
-            keyPassword '111111'
-            storeFile file('E:/sz.jun.zhang/工作任务/版本发布/keyStore')
-            storePassword '111111'
+//            keyAlias 'MyDemo'
+//            keyPassword '111111'
+//            storeFile file('E:/sz.jun.zhang/工作任务/版本发布/keyStore')
+//            storePassword '111111'
         }
         release {
-            keyAlias 'MyDemo'
-            keyPassword '111111'
-            storeFile file('E:/sz.jun.zhang/工作任务/版本发布/keyStore')
-            storePassword '111111'
+//            keyAlias 'MyDemo'
+//            keyPassword '111111'
+//            storeFile file('E:/sz.jun.zhang/工作任务/版本发布/keyStore')
+//            storePassword '111111'
         }
     }
 

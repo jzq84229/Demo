@@ -37,7 +37,8 @@
         </activity>
         <activity
             android:name=".stickyGridHeaders.StickyGridHeadsActivity"
-            android:label="@string/title_activity_sticky_grid_heads" >
+            android:label="@string/title_activity_sticky_grid_heads"
+            android:logo="@drawable/house_blue">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,7 +58,8 @@
         </activity>
         <activity
             android:name=".actionbartest.MyActionBarActivity"
-            android:label="@string/title_activity_my_action_bar">
+            android:label="@string/title_activity_my_action_bar"
+            android:logo="@drawable/house_blue">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -71,6 +73,20 @@
         <activity
             android:name=".actionbartest.TabNavigationActivity"
             android:label="@string/title_activity_tab_navigation" >
+        </activity>
+        <activity
+            android:name=".text.LinkActivity"
+            android:label="@string/title_activity_link"
+            android:logo="@drawable/house_blue"
+            android:parentActivityName=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zhang.mydemo.MainActivity" />
         </activity>
     </application>
 

@@ -15,11 +15,12 @@ import android.view.ViewConfiguration;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.zhang.mydemo.BaseActivity;
 import com.zhang.mydemo.R;
 
 import java.lang.reflect.Field;
 
-public class MyActionBarActivity extends AppCompatActivity {
+public class MyActionBarActivity extends BaseActivity {
     MenuItem menuItem = null;
     /** An array of strings to populate dropdown list */
     String[] actions = new String[] { "Bookmark", "Subscribe", "Share" };
@@ -27,20 +28,34 @@ public class MyActionBarActivity extends AppCompatActivity {
     ShareActionProvider provider = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void setContent() {
         setContentView(R.layout.activity_my_action_bar);
+    }
 
+    @Override
+    public void findViews() {
 
+    }
+
+    @Override
+    public void setData() {
+
+    }
+
+    @Override
+    public void showContent() {
         // 通过hilde()和show()方法可以控制actionbar的隐藏和显示
-        ActionBar actionBar = getSupportActionBar();
-        // actionBar.hide();
-        // actionBar.show();
-        getOverflowMenu();
+        ActionBar mActionBar = getSupportActionBar();
+        mActionBar.setHomeButtonEnabled(true);
+//        mActionBar.setDisplayShowHomeEnabled(true);
+//        mActionBar.setDefaultDisplayHomeAsUpEnabled(true);
+//        mActionBar.hide();
+//        mActionBar.show();
+//        setOverflowShowingAlways();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, actions);
 
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         ActionBar.OnNavigationListener naviagtionListener = new ActionBar.OnNavigationListener() {
             @Override
             public boolean onNavigationItemSelected(int itemPosition, long itemId) {
@@ -49,24 +64,10 @@ public class MyActionBarActivity extends AppCompatActivity {
             }
         };
 
-        actionBar.setListNavigationCallbacks(adapter, naviagtionListener);
+        mActionBar.setListNavigationCallbacks(adapter, naviagtionListener);
     }
 
-    private void getOverflowMenu() {
-        try {
-            ViewConfiguration config = ViewConfiguration.get(this);
-            Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
-            if (menuKeyField != null) {
-                menuKeyField.setAccessible(true);
-                menuKeyField.setBoolean(config, false);
-            }
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
 
-    }
 
 
     @Override
@@ -91,6 +92,9 @@ public class MyActionBarActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.home:
+                showToast("home");
+                break;
             case R.id.menu_settings:
                 showToast("setting");
                 break;
@@ -125,16 +129,7 @@ public class MyActionBarActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private Toast toast;
-    private void showToast(String str) {
-        if (toast == null) {
-            toast = Toast.makeText(this, str, Toast.LENGTH_SHORT);
-        } else {
-            toast.setText(str);
-        }
-        toast.show();
 
-    }
 
     private class TestTask extends AsyncTask<String, Void, String> {
 

@@ -2,8 +2,10 @@ package com.zhang.mydemo.stickyGridHeaders;
 
 import android.app.ProgressDialog;
 import android.database.Cursor;
-import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v7.app.ActionBar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
@@ -108,6 +110,9 @@ public class StickyGridHeadsActivity extends BaseActivity {
         mGridView.setAreHeadersSticky(false);
         mGridView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), false, true));
 
+        ActionBar mActionBar = getSupportActionBar();
+        mActionBar.setDisplayShowHomeEnabled(true);
+//        mActionBar.setDefaultDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -129,6 +134,38 @@ public class StickyGridHeadsActivity extends BaseActivity {
     @Override
     public void showContent() {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_default, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+        switch (item.getItemId()) {
+            case R.id.home:
+                showToast("home");
+                break;
+            case R.id.menu_settings:
+                showToast("setting");
+                break;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void imageScanComplete(Cursor cursor){
