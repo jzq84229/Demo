@@ -17,4 +17,12 @@
         <item name="android:textColor">#2456c2</item>
     </style>
 
+    <style name="mProgress_circle">
+        <item name="android:indeterminateDrawable">@drawable/progress_circle_shap</item>
+        <item name="android:minWidth">25dp</item>
+        <item name="android:minHeight">25dp</item>
+        <item name="android:maxWidth">60dp</item>
+        <item name="android:maxHeight">60dp</item>
+    </style>
+
 </resources>

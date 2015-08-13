@@ -42,6 +42,9 @@
       via an &lt;a&gt; tag.  Use a \"tel:\" URL
       to <a href="tel:4155551212">dial a phone number</a>.
     </string>
+    <string name="title_activity_float_button">FloatButtonActivity</string>
+    <string name="title_activity_clickable_text">ClickableTextActivity</string>
+    <string name="title_activity_test">TestActivity</string>
 
 
 </resources>

@@ -38,7 +38,7 @@
         <activity
             android:name=".stickyGridHeaders.StickyGridHeadsActivity"
             android:label="@string/title_activity_sticky_grid_heads"
-            android:logo="@drawable/house_blue">
+            android:logo="@drawable/house_blue" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,7 +59,7 @@
         <activity
             android:name=".actionbartest.MyActionBarActivity"
             android:label="@string/title_activity_my_action_bar"
-            android:logo="@drawable/house_blue">
+            android:logo="@drawable/house_blue" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,9 +84,37 @@
 
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zhang.mydemo.MainActivity" />
+        </activity>
+        <activity
+            android:name=".floatbutton.FloatButtonActivity"
+            android:label="@string/title_activity_float_button" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".text.ClickableTextActivity"
+            android:label="@string/title_activity_clickable_text"
+            android:parentActivityName=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zhang.mydemo.MainActivity" />
+        </activity>
+        <activity
+            android:name=".test.TestActivity"
+            android:label="@string/title_activity_test" >
         </activity>
     </application>
 

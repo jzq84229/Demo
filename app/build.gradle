@@ -105,6 +105,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.tonicartos:stickygridheaders:1.0.1'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+//    compile 'com.marshalchen.ultimateandroid:ultimateandroiduilollipop:0.7.0'
 
 //    androidTestCompile 'com.android.support.test:runner:0.3'
 //    // Set this dependency to use JUnit 4 rules
@@ -116,4 +117,5 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.3'
     androidTestCompile 'com.android.support.test:rules:0.3'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
+
 }
