@@ -45,6 +45,8 @@
     <string name="title_activity_float_button">FloatButtonActivity</string>
     <string name="title_activity_clickable_text">ClickableTextActivity</string>
     <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_list_view_clickable_text">ListViewClickableTextActivity</string>
+    <string name="title_activity_html">HtmlActivity</string>
 
 
 </resources>

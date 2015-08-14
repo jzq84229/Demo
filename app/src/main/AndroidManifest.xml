@@ -116,6 +116,24 @@
             android:name=".test.TestActivity"
             android:label="@string/title_activity_test" >
         </activity>
+        <activity
+            android:name=".text.ListViewClickableTextActivity"
+            android:label="@string/title_activity_list_view_clickable_text" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".text.HtmlActivity"
+            android:label="@string/title_activity_html" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

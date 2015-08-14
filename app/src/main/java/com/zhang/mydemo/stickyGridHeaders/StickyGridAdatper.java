@@ -92,11 +92,11 @@ public class StickyGridAdatper extends BaseAdapter implements StickyGridHeadersS
     }
 
 
-    public static class ViewHolder {
+    private static class ViewHolder {
         public MyImageView mImageView;
     }
 
-    public static class HeaderViewHolder {
+    private static class HeaderViewHolder {
         public TextView mTextView;
     }
 }
