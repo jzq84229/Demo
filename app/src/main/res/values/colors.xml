@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#d5d5d5</color>
+    <color name="black_alpha">#60000000</color>
     <color name="text_color">#00BFFF</color>
     <color name="comment_name_color">#31b1ed</color>
+
+    <color name="btn_unenable_grey">#5e9ec1</color>
+    <color name="btn_enable_blue">#31b1ed</color>
+
+    <color name="text_color_hint">#c9c9c9</color>
+    <color name="text_color_edit">#0f0f0f</color>
 </resources>

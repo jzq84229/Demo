@@ -15,13 +15,13 @@
             app:showAsAction="ifRoom" />
         <item
             android:id="@+id/action_refresh"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@mipmap/ic_launcher"
             android:orderInCategory="100"
             app:showAsAction="always|withText"
             android:title="refresh"/>
         <item
             android:id="@+id/action_about"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@mipmap/ic_launcher"
             android:orderInCategory="102"
             app:showAsAction="ifRoom"
             android:title="about"/>
@@ -35,7 +35,7 @@
             android:title="edit"/>
         <item
             android:id="@+id/action_contextual"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@mipmap/ic_launcher"
             android:orderInCategory="105"
             app:showAsAction="never"
             android:title="contextual"/>

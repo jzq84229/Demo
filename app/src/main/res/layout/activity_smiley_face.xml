@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zhang.mydemo.simleyparse.SmileyFaceActivity">
+
+    <ListView
+        android:id="@+id/lv_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.zhang.mydemo.simleyparse.EmotionLinearLayout
+        android:id="@+id/emotion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+    </com.zhang.mydemo.simleyparse.EmotionLinearLayout>
+
+</RelativeLayout>

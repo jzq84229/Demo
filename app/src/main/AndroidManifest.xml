@@ -134,6 +134,25 @@
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".simleyparse.SmileyParseActivity"
+            android:label="@string/title_activity_smiley_parse" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".simleyparse.SmileyFaceActivity"
+            android:label="@string/title_activity_smiley_face"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

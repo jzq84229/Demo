@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="14dp"
+        android:minLines="1"
+        android:maxLines="2"
+        android:hint="评论"
+        android:textSize="14sp"
+        android:maxLength="500"
+        android:textColorHint="#c9c9c9"
+        android:textColor="#0f0f0f"
+        android:background="@null"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <Button
+        android:id="@+id/btn_smiley"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/emo"/>
+
+    <View
+        android:id="@+id/id_divider"
+        android:layout_width="1dp"
+        android:layout_height="27dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="#D2D2D2" />
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="发送"
+        android:textColor="@color/dialog_btn_text_color" />
+
+</LinearLayout>

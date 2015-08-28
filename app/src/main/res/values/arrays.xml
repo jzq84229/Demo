@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- NOTE: if you change anything about this array, you must make the corresponding change
+         to the array DEFAULT_SMILEY_RES_IDS in MessageListItem.java and to default_smiley_names
+         below. -->
+    <string-array name="default_smiley_texts" translatable="false">
+        <item>[高兴]</item>   <!-- 0: Happy -->
+        <item>[悲伤]</item>   <!-- 1: Sad -->
+        <item>[眨眼]</item>   <!-- 2: Winking -->
+        <item>[吐舌]</item>   <!-- 3: Tongue sticking out -->
+        <item>[惊讶]</item>   <!-- 4: Surprised -->
+        <item>[亲吻]</item>   <!-- 5: Kissing -->
+        <item>[叫喊]</item>    <!-- 6: Yelling -->
+        <item>[酷]</item>   <!-- 7: Cool -->
+        <item>[钱嘴]</item>   <!-- 8: Money mouth -->
+        <item>[笨嘴]</item>   <!-- 9: Foot in mouth -->
+        <item>[尴尬]</item>   <!-- 10: Embarrassed -->
+        <item>[天使]</item>  <!-- 11: Angel -->
+        <item>[犹豫]</item>  <!-- 12: Undecided -->
+        <item>[哭]</item>  <!-- 13: Crying -->
+        <item>[保密]</item>   <!-- 14: Lips are sealed -->
+        <item>[大笑]</item>   <!-- 15: Laughing -->
+        <item>[困惑]</item>   <!-- 16: Confused -->
+        <item>[心]</item> <!-- 17: Heart -->
+        <item>[疯狂]</item>   <!-- 18: Mad -->
+        <item>[傻笑]</item>   <!-- 19: Smirk -->
+        <item>[面无表情]</item>   <!-- 20: Poker face -->
+    </string-array>
+
+    <!-- NOTE: if you change anything about this array, you must make the corresponding change
+         to the array DEFAULT_SMILEY_RES_IDS in SmileyParser.java and to default_smiley_texts
+         above. -->
+    <string-array name="default_smiley_names">
+        <item>Happy</item>                   <!-- 0: :-) -->
+        <item>Sad</item>                     <!-- 1: :-( -->
+        <item>Winking</item>                 <!-- 2: ;-) -->
+        <item>Tongue sticking out</item>     <!-- 3: :-P -->
+        <item>Surprised</item>               <!-- 4: =-O -->
+        <item>Kissing</item>                 <!-- 5: :-* -->
+        <item>Yelling</item>                 <!-- 6: :O -->
+        <item>Cool</item>                    <!-- 7: B-) -->
+        <item>Money mouth</item>             <!-- 8: :-$ -->
+        <item>Foot in mouth</item>           <!-- 9: :-! -->
+        <item>Embarrassed</item>             <!-- 10: :-[ -->
+        <item>Angel</item>                   <!-- 11: O:-) -->
+        <item>Undecided</item>               <!-- 12: :-\\ -->
+        <item>Crying</item>                  <!-- 13: :\'( -->
+        <item>Lips are sealed</item>         <!-- 14: :-X -->
+        <item>Laughing</item>                <!-- 15: :-D -->
+        <item>Confused</item>                <!-- 16: o_O -->
+        <item>Heart</item>                   <!-- 17: <3 -->
+        <item>Mad</item>                     <!-- 18: x-( -->
+        <item>Smirk</item>                   <!-- 19: :-/ -->
+        <item>Poker face</item>              <!-- 20: :-I -->
+    </string-array>
+
+    <string-array name="smiley_texts">
+        <item>[微笑]</item>
+        <item>[撇嘴]</item>
+        <item>[色]</item>
+        <item>[发呆]</item>
+        <item>[得意]</item>
+        <item>[流泪]</item>
+        <item>[害羞]</item>
+        <item>[闭嘴]</item>
+        <item>[睡]</item>
+        <item>[大哭]</item>
+        <item>[尴尬]</item>
+        <item>[发怒]</item>
+        <item>[调皮]</item>
+        <item>[呲牙]</item>
+        <item>[惊讶]</item>
+        <item>[难过]</item>
+        <item>[酷]</item>
+        <item>[冷汗]</item>
+        <item>[抓狂]</item>
+        <item>[吐]</item>
+        <item>[偷笑]</item>
+        <item>[愉快]</item>
+        <item>[白眼]</item>
+        <item>[傲慢]</item>
+        <item>[饥饿]</item>
+        <item>[困]</item>
+        <item>[惊恐]</item>
+        <item>[流汗]</item>
+        <item>[憨笑]</item>
+        <item>[悠闲]</item>
+        <item>[奋斗]</item>
+        <item>[咒骂]</item>
+        <item>[疑问]</item>
+        <item>[嘘]</item>
+        <item>[晕]</item>
+        <item>[疯了]</item>
+        <item>[衰]</item>
+        <item>[骷髅]</item>
+        <item>[敲打]</item>
+        <item>[再见]</item>
+        <item>[擦汗]</item>
+        <item>[扣鼻]</item>
+        <item>[鼓掌]</item>
+        <item>[糗大了]</item>
+        <item>[坏笑]</item>
+        <item>[左哼哼]</item>
+        <item>[右哼哼]</item>
+        <item>[哈欠]</item>
+        <item>[鄙视]</item>
+        <item>[委屈]</item>
+        <item>[快哭了]</item>
+        <item>[阴险]</item>
+        <item>[亲亲]</item>
+        <item>[吓]</item>
+        <item>[可怜]</item>
+        <item>[菜刀]</item>
+        <item>[西瓜]</item>
+        <item>[啤酒]</item>
+        <item>[篮球]</item>
+        <item>[乒乓]</item>
+        <item>[咖啡]</item>
+        <item>[饭]</item>
+        <item>[猪头]</item>
+        <item>[玫瑰]</item>
+        <item>[凋谢]</item>
+        <item>[嘴唇]</item>
+        <item>[爱心]</item>
+        <item>[心碎]</item>
+        <item>[蛋糕]</item>
+        <item>[闪电]</item>
+        <item>[炸弹]</item>
+        <item>[刀]</item>
+        <item>[足球]</item>
+        <item>[瓢虫]</item>
+        <item>[便便]</item>
+        <item>[月亮]</item>
+        <item>[太阳]</item>
+        <item>[礼物]</item>
+        <item>[拥抱]</item>
+        <item>[强]</item>
+        <item>[弱]</item>
+        <item>[握手]</item>
+        <item>[胜利]</item>
+        <item>[抱拳]</item>
+        <item>[勾引]</item>
+        <item>[拳头]</item>
+        <item>[差劲]</item>
+        <item>[爱你]</item>
+        <item>[NO]</item>
+        <item>[OK]</item>
+        <item>[爱情]</item>
+        <item>[飞吻]</item>
+        <item>[跳跳]</item>
+        <item>[发抖]</item>
+        <item>[怄火]</item>
+        <item>[转圈]</item>
+        <item>[磕头]</item>
+        <item>[回头]</item>
+        <item>[跳绳]</item>
+        <item>[投降]</item>
+        <item>[微笑的]</item>
+        <item>[口罩]</item>
+        <item>[笑哭]</item>
+        <item>[吐舌]</item>
+        <item>[吃惊]</item>
+        <item>[激动]</item>
+        <item>[尖叫]</item>
+        <item>[沉思]</item>
+        <item>[眨眼]</item>
+        <item>[安心]</item>
+        <item>[不高兴]</item>
+        <item>[魔鬼]</item>
+        <item>[幽灵]</item>
+        <item>[gift-heart]</item>
+        <item>[祈祷]</item>
+        <item>[力量]</item>
+        <item>[钱]</item>
+        <item>[cake]</item>
+        <item>[tada]</item>
+        <item>[gift]</item>
+    </string-array>
+
+    <string-array name="smiley_names">
+
+    </string-array>
+</resources>

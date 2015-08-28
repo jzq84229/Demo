@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
     </style>
 
@@ -23,6 +23,27 @@
         <item name="android:minHeight">25dp</item>
         <item name="android:maxWidth">60dp</item>
         <item name="android:maxHeight">60dp</item>
+    </style>
+
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:background">@android:color/transparent</item><!--背景-->
+        <item name="android:windowBackground">@android:color/transparent</item><!--窗口背景-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="grey_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/grey</item>
+    </style>
+    
+    <style name="commentEditDialogAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/comment_edit_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/comment_edit_dialog_out</item>
     </style>
 
 </resources>

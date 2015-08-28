@@ -47,6 +47,8 @@
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_list_view_clickable_text">ListViewClickableTextActivity</string>
     <string name="title_activity_html">HtmlActivity</string>
+    <string name="title_activity_smiley_parse">SmileyParseActivity</string>
+    <string name="title_activity_smiley_face">SmileyFaceActivity</string>
 
 
 </resources>

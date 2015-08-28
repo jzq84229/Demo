@@ -10,17 +10,17 @@
             android:actionViewClass="android.widget.SearchView"/>
         <item android:id="@+id/menu_action_icon1"
             android:title="Action icon1"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@mipmap/ic_launcher"
             app:showAsAction="ifRoom"/>
 
         <item android:id="@+id/menu_action_icon2"
             android:title="Action Icon2"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@mipmap/ic_launcher"
             app:showAsAction="ifRoom"/>
 
         <item android:id="@+id/menu_icon_test"
             android:title="Icon Test"
-            android:icon="@drawable/ic_launcher"/>
+            android:icon="@mipmap/ic_launcher"/>
 
         <item android:id="@+id/menu_invoke_listnav"
             android:title="Invoke List Nav"/>
