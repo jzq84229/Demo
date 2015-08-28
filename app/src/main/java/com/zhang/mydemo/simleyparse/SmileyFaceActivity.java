@@ -20,12 +20,14 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.zhang.mydemo.BaseActivity;
 import com.zhang.mydemo.Constant;
 import com.zhang.mydemo.R;
+import com.zhang.mydemo.util.DebugUtils;
 import com.zhang.mydemo.util.ScreenUtil;
 
 import java.lang.ref.WeakReference;
@@ -35,6 +37,7 @@ import java.util.List;
 public class SmileyFaceActivity extends BaseActivity implements EmotionLinearLayout.OnEmotionLayoutListener {
     private static ListView mListView;
     private EmotionLinearLayout emotionLayout;
+    private View footerSpace;
 
     private ActionBar mActionBar;
     private MyAdapter myAdapter;
@@ -93,6 +96,7 @@ public class SmileyFaceActivity extends BaseActivity implements EmotionLinearLay
         rootView = getWindow().getDecorView();
 
         mActionBar = getSupportActionBar();
+        footerSpace = findViewById(R.id.v_footer_space);
     }
 
     @Override
@@ -140,6 +144,22 @@ public class SmileyFaceActivity extends BaseActivity implements EmotionLinearLay
                     msg.setData(data);
                     mHandler.sendMessageDelayed(msg, 100);
 
+                    showFooterSpace(commentEditDialogHeight + keyboardHeight);
+                }
+
+                if (previousHeightDiffrence - keyboardHeight > 50) {
+                    if (footerSpace.getVisibility() == View.VISIBLE) {
+                        if (emotionLayout.getVisibility() == View.VISIBLE){
+//                            DebugUtils.d("tag", "-----------显示表情栏，不隐藏footerSpace");
+                        } else if (replyDialog != null) {
+//                            DebugUtils.d("tag", "-----------收回键盘，重设footerSpace高度");
+                            showFooterSpace(commentEditDialogHeight);
+                        }
+//                        else {
+//                            DebugUtils.d("tag", "-----------repleyDialog被取消，隐藏footerSpace");
+//                            hideFooterSpace();
+//                        }
+                    }
                 }
                 previousHeightDiffrence = keyboardHeight;
 
@@ -161,6 +181,22 @@ public class SmileyFaceActivity extends BaseActivity implements EmotionLinearLay
             rootView.getViewTreeObserver().removeGlobalOnLayoutListener(mLayoutChangeListener);
         }
         super.onDestroy();
+    }
+
+    /**
+     * 显示底部空白控件
+     * @param height
+     */
+    private void showFooterSpace(int height){
+        footerSpace.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height));
+        footerSpace.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * 隐藏底部空白控件
+     */
+    private void hideFooterSpace(){
+        footerSpace.setVisibility(View.GONE);
     }
 
     private void getScrollItemBottomPosition(int position){
@@ -250,6 +286,7 @@ public class SmileyFaceActivity extends BaseActivity implements EmotionLinearLay
                 @Override
                 public void onCancel(DialogInterface dialog) {
                     hideSoftKeyboard();
+                    hideFooterSpace();
                 }
             });
 
@@ -269,7 +306,7 @@ public class SmileyFaceActivity extends BaseActivity implements EmotionLinearLay
         emotionLayout.setContentHint(hintStr);
         showSoftKeyboard();
         if (emotionLayout.getVisibility() == View.VISIBLE) {
-            emotionLayout.hideEmotionView();
+            hideEmotionlayout();
         }
 
         replyDialog.show();
@@ -282,17 +319,20 @@ public class SmileyFaceActivity extends BaseActivity implements EmotionLinearLay
         }
     }
 
+    private void hideEmotionlayout(){
+        hideFooterSpace();
+        emotionLayout.hideEmotionView();
+    }
+
     @Override
     public void sendMessage(String str) {
         if (!TextUtils.isEmpty(str)) {
             hideReplyDialog();
-            emotionLayout.hideEmotionView();
+            hideEmotionlayout();
 
             sendComment(str);
         }
     }
-
-
 
     @Override
     public void smileyBtnClick(boolean showEmotion) {
@@ -306,13 +346,13 @@ public class SmileyFaceActivity extends BaseActivity implements EmotionLinearLay
             replyDialog.setContent(emotionLayout.getContent());
             replyDialog.show();
             emotionLayout.setAnimation(AnimationUtils.loadAnimation(this, R.anim.comment_edit_dialog_out));
-            emotionLayout.hideEmotionView();
+            hideEmotionlayout();
         }
     }
 
     @Override
     public void emotionOutsideClick() {
-        emotionLayout.hideEmotionView();
+        hideEmotionlayout();
     }
 
     /**
@@ -334,19 +374,14 @@ public class SmileyFaceActivity extends BaseActivity implements EmotionLinearLay
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public void onBackPressed() {
+        if (emotionLayout.getVisibility() == View.VISIBLE) {
+            hideEmotionlayout();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
 
 
