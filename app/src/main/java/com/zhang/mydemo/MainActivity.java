@@ -39,6 +39,8 @@ public class MainActivity extends Activity {
             path = "";
         }
 
+        View noContentView = getLayoutInflater().inflate(R.layout.no_content_layout, null);
+        listView.setEmptyView(noContentView);
         listView.setAdapter(new SimpleAdapter(this, getData(path),
                 android.R.layout.simple_list_item_1, new String[]{"title"},
                 new int[]{android.R.id.text1}));

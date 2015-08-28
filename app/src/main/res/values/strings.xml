@@ -3,10 +3,10 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_my_action_bar">MyActionBarActivity</string>
+    <string name="title_activity_my_action_bar">ActionBar/MyActionBarActivity</string>
     <string name="title_activity_debug">DebugActivity</string>
     <string name="title_activity_base_action_bar">BaseActionBarActivity</string>
-    <string name="title_activity_tab_navigation_action_bar">TabNavigationActionBarActivity</string>
+    <string name="title_activity_tab_navigation_action_bar">ActionBar/TabNavigationActionBarActivity</string>
     <string name="title_activity_list_navigation_action_bar">ListNavigationActionBarActivity
     </string>
     <string name="title_activity_standard_navigation_action_bar">
@@ -22,7 +22,7 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_link">Link</string>
+    <string name="title_activity_link">Text/Link</string>
 
     <string name="link_text_auto"><b>text1: Various kinds
       of data that will be auto-linked.</b>  In
@@ -43,12 +43,12 @@
       to <a href="tel:4155551212">dial a phone number</a>.
     </string>
     <string name="title_activity_float_button">FloatButtonActivity</string>
-    <string name="title_activity_clickable_text">ClickableTextActivity</string>
+    <string name="title_activity_clickable_text">Text/ClickableTextActivity</string>
     <string name="title_activity_test">TestActivity</string>
-    <string name="title_activity_list_view_clickable_text">ListViewClickableTextActivity</string>
-    <string name="title_activity_html">HtmlActivity</string>
-    <string name="title_activity_smiley_parse">SmileyParseActivity</string>
-    <string name="title_activity_smiley_face">SmileyFaceActivity</string>
+    <string name="title_activity_list_view_clickable_text">Text/ListViewClickableTextActivity</string>
+    <string name="title_activity_html">Text/HtmlActivity</string>
+    <string name="title_activity_smiley_parse">Smiley/SmileyParseActivity</string>
+    <string name="title_activity_smiley_face">Smiley/SmileyFaceActivity</string>
 
 
 </resources>

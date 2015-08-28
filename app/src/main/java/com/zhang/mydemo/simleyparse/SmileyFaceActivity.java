@@ -263,7 +263,6 @@ public class SmileyFaceActivity extends BaseActivity implements EmotionLinearLay
      */
     private static void listViewScrollHeight(int scrollItemPosition, int softKeyboardHeight){
         if (scrollItemPosition >= 0) {
-//            int scrollHeight = scrollItemPosition - (screenHeight - statusBarHeight - actionBarHeight - commentEditDialogHeight - softKeyboardHeight);
 //            System.out.println("-----------actionbarHeight:" + actionBarHeight + "---statusBar:" + statusBarHeight + "---commentDialog:" + commentEditDialogHeight + "-- screen:" + screenHeight);
             int scrollHeight = (statusBarHeight + actionBarHeight + scrollItemPosition + commentEditDialogHeight + softKeyboardHeight) - screenHeight;
             if (Math.abs(scrollHeight) > 10) {

@@ -23,7 +23,6 @@
             android:label="@string/title_activity_tab_navigation_action_bar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -41,7 +40,6 @@
             android:logo="@drawable/house_blue" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -62,7 +60,6 @@
             android:logo="@drawable/house_blue" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -81,7 +78,6 @@
             android:parentActivityName=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
 
@@ -94,7 +90,6 @@
             android:label="@string/title_activity_float_button" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -104,7 +99,6 @@
             android:parentActivityName=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
 
@@ -121,7 +115,6 @@
             android:label="@string/title_activity_list_view_clickable_text" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -130,7 +123,6 @@
             android:label="@string/title_activity_html" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -139,7 +131,6 @@
             android:label="@string/title_activity_smiley_parse" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -149,7 +140,6 @@
             android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
