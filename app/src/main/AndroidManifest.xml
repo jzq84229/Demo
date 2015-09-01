@@ -23,6 +23,7 @@
             android:label="@string/title_activity_tab_navigation_action_bar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -40,6 +41,7 @@
             android:logo="@drawable/house_blue" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -60,6 +62,7 @@
             android:logo="@drawable/house_blue" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -78,6 +81,7 @@
             android:parentActivityName=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
 
@@ -90,6 +94,7 @@
             android:label="@string/title_activity_float_button" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -99,6 +104,7 @@
             android:parentActivityName=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
 
@@ -107,14 +113,11 @@
                 android:value="com.zhang.mydemo.MainActivity" />
         </activity>
         <activity
-            android:name=".test.TestActivity"
-            android:label="@string/title_activity_test" >
-        </activity>
-        <activity
             android:name=".text.ListViewClickableTextActivity"
             android:label="@string/title_activity_list_view_clickable_text" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -123,6 +126,7 @@
             android:label="@string/title_activity_html" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -131,15 +135,57 @@
             android:label="@string/title_activity_smiley_parse" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
             android:name=".simleyparse.SmileyFaceActivity"
             android:label="@string/title_activity_smiley_face"
-            android:windowSoftInputMode="stateHidden|adjustPan">
+            android:windowSoftInputMode="stateHidden|adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".test.TestActivity"
+            android:label="@string/title_activity_test" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <!-- ============================ -->
+        <!-- API EXAMPLES -->
+        <!-- ============================ -->
+        <activity
+            android:name=".api.actionbar.ActionBarMechanics"
+            android:label="@string/title_activity_action_bar_mechanics" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".api.actionbar.ActionBarTabs"
+            android:label="@string/title_activity_action_bar_tabs" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".api.actionbar.ActionBarUsage"
+            android:label="@string/title_activity_action_bar_usage" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>

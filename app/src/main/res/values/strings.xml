@@ -49,6 +49,9 @@
     <string name="title_activity_html">Text/HtmlActivity</string>
     <string name="title_activity_smiley_parse">Smiley/SmileyParseActivity</string>
     <string name="title_activity_smiley_face">Smiley/SmileyFaceActivity</string>
+    <string name="title_activity_action_bar_mechanics">API/ActionBar/ActionBarMechanics</string>
+    <string name="title_activity_action_bar_tabs">API/ActionBar/ActionBarTabs</string>
+    <string name="title_activity_action_bar_usage">API/ActionBar/ActionBarUsage</string>
 
 
 </resources>
