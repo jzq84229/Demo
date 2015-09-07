@@ -31,15 +31,15 @@ android {
 
     signingConfigs {
         debug{
-            keyAlias 'MyDemo'
+            keyAlias 'medemo'
             keyPassword '111111'
-            storeFile file('E:/sz.jun.zhang/android/myKeyStore')
+            storeFile file('E:/sz.jun.zhang/android/myKeyStore.jks')
             storePassword '111111'
         }
         release {
-            keyAlias 'MyDemo'
+            keyAlias 'medemo'
             keyPassword '111111'
-            storeFile file('E:/sz.jun.zhang/android/myKeyStore')
+            storeFile file('E:/sz.jun.zhang/android/myKeyStore.jks')
             storePassword '111111'
         }
     }
@@ -116,5 +116,4 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.3'
     androidTestCompile 'com.android.support.test:rules:0.3'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
-
 }
