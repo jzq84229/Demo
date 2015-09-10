@@ -1,5 +1,30 @@
 apply plugin: 'com.android.application'
 
+//File propFile = file('signing.properties');
+//if (propFile.exists()) {
+//    def Properties props = new Properties()
+//    props.load(new FileInputStream(propFile))
+//    if (props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+//            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+//        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+//        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+//        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+//        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+//    } else {
+//        android.buildTypes.release.signingConfig = null
+//    }
+//} else {
+//    android.buildTypes.release.signingConfig = null
+//}
+
+// 定义一个打包时间
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+Properties props = new Properties();
+props.load(project.rootProject.file('signing.properties').newDataInputStream())
+
 android {
     // 编译SDK的版本
     compileSdkVersion 22
@@ -29,18 +54,23 @@ android {
         abortOnError false
     }
 
+
+
     signingConfigs {
         debug{
-            keyAlias 'medemo'
-            keyPassword '111111'
-            storeFile file('E:/sz.jun.zhang/android/myKeyStore.jks')
-            storePassword '111111'
+
+        }
+        dev{
+            keyAlias props.getProperty("KEY_ALIAS")
+            keyPassword props.getProperty("KEY_PASSWORD")
+            storeFile file(props.getProperty("STORE_FILE"))
+            storePassword props.getProperty("STORE_PASSWORD")
         }
         release {
-            keyAlias 'medemo'
-            keyPassword '111111'
-            storeFile file('E:/sz.jun.zhang/android/myKeyStore.jks')
-            storePassword '111111'
+            keyAlias props.getProperty("KEY_ALIAS")
+            keyPassword props.getProperty("KEY_PASSWORD")
+            storeFile file(props.getProperty("STORE_FILE"))
+            storePassword props.getProperty("STORE_PASSWORD")
         }
     }
 
@@ -55,40 +85,91 @@ android {
             shrinkResources false
             signingConfig signingConfigs.debug
         }
+        dev{
+            // 显示Log
+            buildConfigField("boolean", "LOG_DEBUG", "true")
+
+            versionNameSuffix "-dev"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.dev
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+                        def fileName = "mydemo_v${defaultConfig.versionName}_dev_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
         release {
             // 不显示Log
             buildConfigField "boolean", "LOG_DEBUG", "false"
 
+            versionNameSuffix "-release"
             // 是否进行混淆
             minifyEnabled true
+            // 压缩对齐生成的apk包
             zipAlignEnabled true
             // 移除无用的resource文件
             shrinkResources true
+            // 指定混淆规则，需要压缩优化的混淆要把proguard-android.txt换成proguard-android.txt
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 指定打release包的签名
             signingConfig signingConfigs.release
+            // 启用multidex的支持
+//            multiDexEnabled true
 
-//            applicationVariants.all { variant ->
-//                variant.outputs.each { output ->
-//                    def outputFile = output.outputFile
-//                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
-//                        // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
-//                        def fileName = "boohee_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
-//                        output.outputFile = new File(outputFile.parent, fileName)
-//                    }
-//                }
-//            }
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+                        def fileName = "mydemo_v${defaultConfig.versionName}_release_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
         }
     }
 
+/*
+    // 这里是为了不同过的版本设置一些特殊的参数，并不直接和 buildType 关联。
+    // 例如：使用 buildType 中的 dev 版本，也可以使用 flavors_release 里面设置的自定义参数。这需要自己按照需求制定。
+    productFlavors{
+
+        // 自定义名字不过不能和上面buildType中相同，不然Gradle编译会不通过。在这里使用了『flavors_』前缀以便区分。
+        flavors_release{
+            // manifestPlaceholders中写到的『str』，『package_name』不支持用大写，否则Gradle编译会不通过。
+            // 这里所设置的变量可以直接使用在『AndroidManifest.xml』中，使用方式为：${package_name}
+            // android:label="${package_name}"
+            manifestPlaceholders = [str:"releaseStr", package_name: "com.zhang.demo.release"]
+
+            // 这里的参数是为了在 java 代码中使用，具体的使用方式为：context.getResources().getString(R.string.strKey);
+            resValue("string", "strKey", "releaseStrValue")
+        }
+
+        flavors_dev{
+            manifestPlaceholders = [str:"devStr",package_name:"com.zhang.demo.dev"]
+
+            resValue("string" , "strKey","devStrValue")
+        }
+    }
+*/
+
     // 友盟多渠道打包
-//    productFlavors {
-//        wandoujia {}
+    productFlavors {
+        wandoujia {}
 //        _360 {}
 //        baidu {}
 //        xiaomi {}
 //        tencent {}
 //        taobao {}
-//    }
+    }
 //
 //    productFlavors.all { flavor ->
 //        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
@@ -96,6 +177,8 @@ android {
 
 
 }
+
+
 
 dependencies {
     // 编译extras目录下的ShimmerAndroid模块
@@ -117,3 +200,5 @@ dependencies {
     androidTestCompile 'com.android.support.test:rules:0.3'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
 }
+
+

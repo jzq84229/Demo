@@ -56,5 +56,6 @@
 
 
     <string name="choose_uploadfile">设置字体</string>
+    <string name="title_activity_chart">ChartActivity</string>
 
 </resources>

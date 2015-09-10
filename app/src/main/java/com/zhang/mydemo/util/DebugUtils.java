@@ -5,6 +5,8 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.zhang.mydemo.BuildConfig;
+
 public class DebugUtils{
     public static final String TAG = "Debug";
 	
@@ -177,6 +179,6 @@ public class DebugUtils{
 	}
     
     public class Debug{
-    	public static final boolean DEBUG_MODE = true;
+    	public static final boolean DEBUG_MODE = BuildConfig.LOG_DEBUG;
     }
 }
