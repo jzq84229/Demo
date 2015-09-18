@@ -10,9 +10,6 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.view.View;
-
-import com.zhang.mydemo.util.ScreenUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +18,7 @@ import java.util.Random;
 /**
  * Created by zjun on 2015/9/10 0010.
  */
-public class MyChartView extends GraphicalView {
+public class ChartView extends GraphicalView {
     private int screentWidth;
     private int screentHeight;
     private int eachWidth;
@@ -47,28 +44,28 @@ public class MyChartView extends GraphicalView {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0) {    //判断接受消息类型
-                MyChartView.this.invalidate();  //刷新View
+                ChartView.this.invalidate();  //刷新View
             }
         }
     };
 
-    public MyChartView(Context context) {
+    public ChartView(Context context) {
         super(context);
         initView();
     }
 
-    public MyChartView(Context context, AttributeSet attrs) {
+    public ChartView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
 
-    public MyChartView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ChartView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public MyChartView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ChartView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initView();
     }

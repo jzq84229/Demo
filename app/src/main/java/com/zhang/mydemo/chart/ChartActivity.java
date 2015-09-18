@@ -1,14 +1,16 @@
 package com.zhang.mydemo.chart;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.zhang.mydemo.BaseActivity;
 import com.zhang.mydemo.R;
+import com.zhang.mydemo.chart.mychart.GrowData;
+import com.zhang.mydemo.chart.mychart.MyChartView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ChartActivity extends BaseActivity {
@@ -26,12 +28,12 @@ public class ChartActivity extends BaseActivity {
 
     @Override
     public void findViews() {
-//        lineChart = (LineChart) findViewById(R.id.lineChart);
+        lineChart = (LineChart) findViewById(R.id.lineChart);
     }
 
     @Override
     public void setData() {
-//        initData();
+        initData();
     }
 
     @Override

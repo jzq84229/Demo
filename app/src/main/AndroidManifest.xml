@@ -219,8 +219,17 @@
         </activity>
         <activity
             android:name=".chart.ChartActivity"
-            android:label="@string/title_activity_chart"
-            android:hardwareAccelerated="false">
+            android:hardwareAccelerated="false"
+            android:label="@string/title_activity_chart" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".chart.mychart.MyChartActivity"
+            android:label="@string/title_activity_my_chart" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

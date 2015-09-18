@@ -182,7 +182,7 @@ public class LineChart extends View {
         }
 
         // 绘制折线
-        /*float stepX = (float) xLineLength / 25.0f;
+        float stepX = (float) xLineLength / 25.0f;
         float lowStepY = (float) (yLineLength - (yStep * 2)) / 200.0f;
         float middleStepY = (float) yStep / 100.0f;
         float highStepY = (float) yStep / 200.0f;
@@ -213,9 +213,9 @@ public class LineChart extends View {
                 }
 
                 // 画点
-//                paint.setColor(lineInfo.getPointColor());
-//                canvas.drawCircle(pointX, pointY, 3, paint);
-                renderRing(canvas, paint, 20, pointX, pointY, String.valueOf(lineInfo.getPoints()[j]));
+                paint.setColor(lineInfo.getPointColor());
+                canvas.drawCircle(pointX, pointY, 3, paint);
+//                renderRing(canvas, paint, 20, pointX, pointY, String.valueOf(lineInfo.getPoints()[j]));
 
                 // 连线
                 if (lastStepX != -1 && lastStepY != -1) {
@@ -242,29 +242,7 @@ public class LineChart extends View {
             paint.setColor(Color.BLUE);
             paint.setTextAlign(Paint.Align.LEFT);
             canvas.drawText(lineInfo.getName(), markX + 10, markY + 5, paint);
-        }*/
-    }
-
-    /**
-     * 开放填充内部环形的画笔
-     */
-    public Paint getInnerFillPaint() {
-        if(null == mPaintFill) {
-            mPaintFill = new Paint();
-            mPaintFill.setColor(Color.WHITE);
-            mPaintFill.setStyle(Paint.Style.FILL);
-            mPaintFill.setAntiAlias(true);
         }
-        return mPaintFill;
-    }
-
-    private void renderRing(Canvas canvas,Paint paint,float radius, float cX ,float bottom, String value) {
-        float ringRadius = radius * 0.7f; // MathHelper.getInstance().mul(radius, 0.7f);
-        canvas.drawCircle(cX, bottom, radius, paint);
-
-        canvas.drawCircle(cX, bottom, ringRadius, getInnerFillPaint());
-
-        canvas.drawText(value, cX - 10, bottom + 5, paint);
     }
 
     public ChartInfo getChartInfo() {

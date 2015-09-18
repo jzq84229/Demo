@@ -11,4 +11,9 @@
 
     <color name="text_color_hint">#c9c9c9</color>
     <color name="text_color_edit">#0f0f0f</color>
+
+    <color name="weight_line_color">#ff98dee3</color>
+    <color name="weight_line_fill_color">#8098dee3</color>
+    <color name="height_line_color">#ffffb5ba</color>
+    <color name="height_line_fill_color">#80ffb5ba</color>
 </resources>
