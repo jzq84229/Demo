@@ -58,5 +58,20 @@
     <string name="choose_uploadfile">设置字体</string>
     <string name="title_activity_chart">Chart/ChartActivity</string>
     <string name="title_activity_my_chart">Chart/MyChartActivity</string>
+    <string name="title_activity_flight_preference">FlightPreferenceActivity</string>
+
+
+    <string name="preTitle">My Preferences</string>
+    <string name="preSummary">Set Flight Option Preferences</string>
+    <string name="flight_sort_option_default_value">1</string>
+    <string name="dialogTitle">Choose Flight Options</string>
+    <string name="listSummary">Set Search Options</string>
+    <string name="listTitle">Flight Options</string>
+    <string name="selected_flight_sort_option">selected_flight_sort_option</string>
+    <string name="menu_prefs_title">Settings</string>
+    <string name="title_activity_main_preference">Preference/MainPreferenceActivity</string>
+    <string name="title_activity_coordinator_layout_demo">FrameLayout/CoordinatorLayoutDemo</string>
+    <string name="title_activity_tab_layout_demo">FrameLayout/TabLayoutDemo</string>
+    <string name="title_activity_detail">DetailActivity</string>
 
 </resources>

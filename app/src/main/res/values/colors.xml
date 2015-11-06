@@ -16,4 +16,6 @@
     <color name="weight_line_fill_color">#8098dee3</color>
     <color name="height_line_color">#ffffb5ba</color>
     <color name="height_line_fill_color">#80ffb5ba</color>
+
+    <color name="window_background">#FFF5F5F5</color>
 </resources>

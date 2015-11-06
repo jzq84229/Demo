@@ -5,4 +5,5 @@
 
     <dimen name="smiley_height">15sp</dimen>
     <dimen name="comment_edit_layout_height">44dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

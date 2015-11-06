@@ -1,7 +1,25 @@
 <resources>
 
+    <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo">
+    </style>
+
+    <style name="Base.Theme.DesignDemo" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#0fb73d</item>
+        <item name="colorPrimaryDark">#0ba823</item>
+        <item name="colorAccent">#FF4081</item>
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.DesignDemo">
         <!-- Customize your theme here. -->
     </style>
 
@@ -45,5 +63,11 @@
         <item name="android:windowEnterAnimation">@anim/comment_edit_dialog_in</item>
         <item name="android:windowExitAnimation">@anim/comment_edit_dialog_out</item>
     </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

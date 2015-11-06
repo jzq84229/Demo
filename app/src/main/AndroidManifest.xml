@@ -236,6 +236,44 @@
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".preference.FlightPreferenceActivity"
+            android:label="@string/title_activity_flight_preference"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".preference.MainPreferenceActivity"
+            android:label="@string/title_activity_main_preference" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".framelayout.CoordinatorLayoutDemo"
+            android:label="@string/title_activity_coordinator_layout_demo" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".framelayout.TabLayoutDemo"
+            android:label="@string/title_activity_tab_layout_demo"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".framelayout.DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
