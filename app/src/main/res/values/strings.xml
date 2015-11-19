@@ -73,5 +73,6 @@
     <string name="title_activity_coordinator_layout_demo">FrameLayout/CoordinatorLayoutDemo</string>
     <string name="title_activity_tab_layout_demo">FrameLayout/TabLayoutDemo</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_aidlservice">Service/AIDLServiceActivity</string>
 
 </resources>
