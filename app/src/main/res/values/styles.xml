@@ -1,7 +1,6 @@
 <resources>
 
-    <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo">
-    </style>
+    <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo"></style>
 
     <style name="Base.Theme.DesignDemo" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">#0fb73d</item>
@@ -44,12 +43,18 @@
     </style>
 
     <style name="dialog" parent="@android:style/Theme.Dialog">
-        <item name="android:windowFrame">@null</item><!--边框-->
-        <item name="android:background">@android:color/transparent</item><!--背景-->
-        <item name="android:windowBackground">@android:color/transparent</item><!--窗口背景-->
-        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
-        <item name="android:windowIsTranslucent">false</item><!--半透明-->
-        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowFrame">@null</item>
+        <!--边框-->
+        <item name="android:background">@android:color/transparent</item>
+        <!--背景-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--窗口背景-->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!--模糊-->
+        <item name="android:windowIsTranslucent">false</item>
+        <!--半透明-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否浮现在activity之上-->
         <item name="android:windowNoTitle">true</item>
     </style>
 
@@ -58,16 +63,19 @@
         <item name="android:layout_height">1px</item>
         <item name="android:background">@color/grey</item>
     </style>
-    
+
     <style name="commentEditDialogAnim" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/comment_edit_dialog_in</item>
         <item name="android:windowExitAnimation">@anim/comment_edit_dialog_out</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

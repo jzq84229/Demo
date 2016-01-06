@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -37,8 +38,24 @@ public class ImageScanner {
             @Override
             public void run() {
                 //先发送广播扫描下整个sd卡
-                mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED,
-                        Uri.parse("file://" + Environment.getExternalStorageDirectory())));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    Intent mediaScanIntent = new Intent(
+                            Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+//                    Uri contentUri = Uri.fromFile(out);
+                    Uri contentUri = Uri.parse("file://"
+                            + Environment.getExternalStorageDirectory());
+                    //out is your output file
+                    mediaScanIntent.setData(contentUri);
+                    mContext.sendBroadcast(mediaScanIntent);
+                } else {
+                    mContext.sendBroadcast(new Intent(
+                            Intent.ACTION_MEDIA_MOUNTED,
+                            Uri.parse("file://"
+                                    + Environment.getExternalStorageDirectory())));
+                }
+//                //先发送广播扫描下整个sd卡
+//                mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED,
+//                        Uri.parse("file://" + Environment.getExternalStorageDirectory())));
 
                 Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
                 ContentResolver mContentResolver = mContext.getContentResolver();

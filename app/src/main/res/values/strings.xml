@@ -20,7 +20,7 @@
     <string name="title_activity_contextual_action_bar">ContextualActionBarActivity</string>
     <string name="title_activity_tab_navigation">TabNavigationActivity</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_link">Text/Link</string>
 
@@ -74,5 +74,6 @@
     <string name="title_activity_tab_layout_demo">FrameLayout/TabLayoutDemo</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_aidlservice">Service/AIDLServiceActivity</string>
+    <string name="title_activity_video_record">Video/VideoRecordActivity</string>
 
 </resources>
