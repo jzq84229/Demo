@@ -2,6 +2,7 @@ package com.zhang.mydemo;
 
 import android.app.Application;
 import android.graphics.Bitmap;
+import android.os.StrictMode;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
@@ -9,15 +10,53 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.zhang.mydemo.util.CrashHandler;
+import com.zhang.mydemo.util.ScreenUtil;
 
 /**
  * Created by zjun on 2015/6/15.
  */
 public class BaseApplication extends Application {
+    private static BaseApplication instance;
+    public int screenWidth;
+    public int screenHeight;
+
+    public static BaseApplication getInstance(){
+        return instance;
+    }
 
     @Override
     public void onCreate() {
+        super.onCreate();
+        initDebugSetting();
+        instance = this;
         initImageLoaderConfig();
+        initScreenData();
+    }
+
+    private void initDebugSetting(){
+        if (BuildConfig.DEBUG) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectDiskReads()
+                    .detectDiskWrites()
+                    .detectNetwork()   // or .detectAll() for all detectable problems
+                    .penaltyLog()
+                    .build());
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .detectLeakedSqlLiteObjects()
+                    .detectLeakedClosableObjects()
+                    .penaltyLog()
+                            //            .penaltyDeath()
+                    .build());
+
+            CrashHandler crashHandler = CrashHandler.getInstance();
+            crashHandler.init(getApplicationContext());
+        }
+    }
+
+    private void initScreenData(){
+        screenWidth = ScreenUtil.screenWidthPixels(this);
+        screenHeight = ScreenUtil.screenHeightPixels(this);
     }
 
     private void initImageLoaderConfig(){

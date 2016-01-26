@@ -75,5 +75,7 @@
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_aidlservice">Service/AIDLServiceActivity</string>
     <string name="title_activity_video_record">Video/VideoRecordActivity</string>
+    <string name="title_activity_wave">Animation/WaveActivity</string>
+    <string name="title_activity_gif">Gif/GifActivity</string>
 
 </resources>

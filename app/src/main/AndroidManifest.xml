@@ -41,10 +41,10 @@
         </activity>
         <activity
             android:name=".actionbar.ListNavigationActionBarActivity"
-            android:label="@string/title_activity_list_navigation_action_bar"></activity>
+            android:label="@string/title_activity_list_navigation_action_bar" />
         <activity
             android:name=".actionbar.StandardNavigationActionBarActivity"
-            android:label="@string/title_activity_standard_navigation_action_bar"></activity>
+            android:label="@string/title_activity_standard_navigation_action_bar" />
         <activity
             android:name=".stickyGridHeaders.StickyGridHeadsActivity"
             android:label="@string/title_activity_sticky_grid_heads"
@@ -78,10 +78,10 @@
         </activity>
         <activity
             android:name=".actionbartest.ContextualActionBarActivity"
-            android:label="@string/title_activity_contextual_action_bar"></activity>
+            android:label="@string/title_activity_contextual_action_bar" />
         <activity
             android:name=".actionbartest.TabNavigationActivity"
-            android:label="@string/title_activity_tab_navigation"></activity>
+            android:label="@string/title_activity_tab_navigation" />
         <activity
             android:name=".text.LinkActivity"
             android:label="@string/title_activity_link"
@@ -235,7 +235,7 @@
         <activity
             android:name=".preference.FlightPreferenceActivity"
             android:label="@string/title_activity_flight_preference"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".preference.MainPreferenceActivity"
             android:label="@string/title_activity_main_preference">
@@ -267,7 +267,7 @@
         <activity
             android:name=".framelayout.DetailActivity"
             android:label="@string/title_activity_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".service.AIDLServiceActivity"
             android:label="@string/title_activity_aidlservice"
@@ -281,6 +281,30 @@
         <activity
             android:name=".video.VideoRecordActivity"
             android:label="@string/title_activity_video_record"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <!-- ============================ -->
+        <!-- Animation -->
+        <!-- ============================ -->
+        <activity
+            android:name=".animation.WaveActivity"
+            android:hardwareAccelerated="false"
+            android:label="@string/title_activity_wave"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".gif.GifActivity"
+            android:label="@string/title_activity_gif"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
