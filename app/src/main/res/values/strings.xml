@@ -78,5 +78,6 @@
     <string name="title_activity_wave">Animation/WaveActivity</string>
     <string name="title_activity_gif">Gif/GifActivity</string>
     <string name="title_activity_album">Album/AlbumActivity</string>
+    <string name="title_activity_test1">Test1Activity</string>
 
 </resources>

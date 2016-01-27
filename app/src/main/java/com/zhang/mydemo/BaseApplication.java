@@ -62,9 +62,9 @@ public class BaseApplication extends Application {
 
     private void initImageLoaderConfig(){
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.ic_launcher) // resource or drawable
-                .showImageForEmptyUri(R.drawable.ic_launcher) // resource or drawable
-                .showImageOnFail(R.drawable.ic_launcher) // resource or drawable
+                .showImageOnLoading(R.color.default_image_bg) // resource or drawable
+                .showImageForEmptyUri(R.color.default_image_bg) // resource or drawable
+                .showImageOnFail(R.color.default_image_bg) // resource or drawable
                 .cacheInMemory(true) 					// 设置下载的图片是否缓存在内存中
                 .cacheOnDisk(true) 						// 设置下载的图片是否缓存在SD卡中
                 .considerExifParams(true) 				// 是否考虑JPEG图像EXIF参数（旋转，翻转）
@@ -91,18 +91,18 @@ public class BaseApplication extends Application {
     }
 
     //空间主页图片下载时的options
-    public DisplayImageOptions getImageOptions() {
-        if (imageOptions == null) {
-            imageOptions = new DisplayImageOptions.Builder()
-                    .showImageOnLoading(R.color.default_image_bg)
-                    .showImageForEmptyUri(R.color.default_image_bg)
-                    .showImageOnFail(R.color.default_image_bg)
-                    .cacheInMemory(true) // 设置下载的图片是否缓存在内存中
-                    .cacheOnDisk(true) // 设置下载的图片是否缓存在SD卡中
-                    .bitmapConfig(Bitmap.Config.RGB_565)
-                    .considerExifParams(true)
-                    .build();
-        }
-        return imageOptions;
-    }
+//    public DisplayImageOptions getImageOptions() {
+//        if (imageOptions == null) {
+//            imageOptions = new DisplayImageOptions.Builder()
+//                    .showImageOnLoading(R.color.default_image_bg)
+//                    .showImageForEmptyUri(R.color.default_image_bg)
+//                    .showImageOnFail(R.color.default_image_bg)
+//                    .cacheInMemory(true) // 设置下载的图片是否缓存在内存中
+//                    .cacheOnDisk(true) // 设置下载的图片是否缓存在SD卡中
+//                    .bitmapConfig(Bitmap.Config.RGB_565)
+//                    .considerExifParams(true)
+//                    .build();
+//        }
+//        return imageOptions;
+//    }
 }

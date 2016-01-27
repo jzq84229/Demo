@@ -313,7 +313,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".common.album.AlbumActivity"
+            android:name=".album.AlbumActivity"
             android:label="@string/title_activity_album">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -321,6 +321,10 @@
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".test.Test1Activity"
+            android:label="@string/title_activity_test1"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

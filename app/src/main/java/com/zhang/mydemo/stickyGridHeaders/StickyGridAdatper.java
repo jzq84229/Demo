@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tonicartos.widget.stickygridheaders.StickyGridHeadersSimpleAdapter;
 import com.zhang.mydemo.R;
+import com.zhang.mydemo.util.Utils;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class StickyGridAdatper extends BaseAdapter implements StickyGridHeadersS
     }
 
     @Override
-    public Object getItem(int position) {
+    public GridItem getItem(int position) {
         return list.get(position);
     }
 
@@ -49,6 +50,7 @@ public class StickyGridAdatper extends BaseAdapter implements StickyGridHeadersS
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder mViewHolder;
+        GridItem item = getItem(position);
         if (convertView == null) {
             mViewHolder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.sticky_grid_item, parent, false);
@@ -66,7 +68,7 @@ public class StickyGridAdatper extends BaseAdapter implements StickyGridHeadersS
             mViewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ImageLoader.getInstance().displayImage("file://" + list.get(position).getPath(), mViewHolder.mImageView);
+        ImageLoader.getInstance().displayImage(Utils.getImageFileUrl(item.getPath()), mViewHolder.mImageView);
 
         return convertView;
     }

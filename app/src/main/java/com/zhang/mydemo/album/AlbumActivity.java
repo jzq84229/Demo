@@ -1,10 +1,6 @@
-package com.zhang.mydemo.common.album;
+package com.zhang.mydemo.album;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +15,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zhang.mydemo.BaseActivity;
 import com.zhang.mydemo.BaseApplication;
 import com.zhang.mydemo.R;
+import com.zhang.mydemo.common.album.AlbumHelper;
+import com.zhang.mydemo.common.album.ImageBucket;
+import com.zhang.mydemo.common.album.ImageItem;
 import com.zhang.mydemo.common.viewholder.GridItemHolder;
 import com.zhang.mydemo.util.Utils;
 
@@ -32,7 +31,6 @@ public class AlbumActivity extends BaseActivity {
     private MyAdapter adapter;
     private BaseApplication app;
     private ImageLoader mImageLoader;
-    private DisplayImageOptions options;
     private List<ImageItem> list = new ArrayList<>();
 
     @Override
@@ -82,7 +80,6 @@ public class AlbumActivity extends BaseActivity {
     public void setData() {
         app = (BaseApplication) getApplication();
         mImageLoader = ImageLoader.getInstance();
-        options = app.getImageOptions();
 
         adapter = new MyAdapter();
         mGridView.setAdapter(adapter);
@@ -163,7 +160,7 @@ public class AlbumActivity extends BaseActivity {
                 holder = (GridItemHolder) convertView.getTag();
             }
 
-            mImageLoader.displayImage(Utils.getImageFileUrl(item.getImagePath()), holder.mImageView, options);
+            mImageLoader.displayImage(Utils.getImageFileUrl(item.getImagePath()), holder.mImageView);
             return convertView;
         }
     }
