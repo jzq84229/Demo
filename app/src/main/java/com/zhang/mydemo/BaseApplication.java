@@ -20,6 +20,7 @@ public class BaseApplication extends Application {
     private static BaseApplication instance;
     public int screenWidth;
     public int screenHeight;
+    private DisplayImageOptions imageOptions;
 
     public static BaseApplication getInstance(){
         return instance;
@@ -87,5 +88,21 @@ public class BaseApplication extends Application {
                 .build();
 
         ImageLoader.getInstance().init(config);
+    }
+
+    //空间主页图片下载时的options
+    public DisplayImageOptions getImageOptions() {
+        if (imageOptions == null) {
+            imageOptions = new DisplayImageOptions.Builder()
+                    .showImageOnLoading(R.color.default_image_bg)
+                    .showImageForEmptyUri(R.color.default_image_bg)
+                    .showImageOnFail(R.color.default_image_bg)
+                    .cacheInMemory(true) // 设置下载的图片是否缓存在内存中
+                    .cacheOnDisk(true) // 设置下载的图片是否缓存在SD卡中
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                    .considerExifParams(true)
+                    .build();
+        }
+        return imageOptions;
     }
 }

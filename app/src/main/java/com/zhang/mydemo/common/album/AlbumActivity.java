@@ -1,6 +1,10 @@
-package com.zhang.mydemo.test;
+package com.zhang.mydemo.common.album;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,19 +19,15 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zhang.mydemo.BaseActivity;
 import com.zhang.mydemo.BaseApplication;
 import com.zhang.mydemo.R;
-import com.zhang.mydemo.common.album.AlbumHelper;
-import com.zhang.mydemo.common.album.ImageBucket;
-import com.zhang.mydemo.common.album.ImageItem;
 import com.zhang.mydemo.common.viewholder.GridItemHolder;
 import com.zhang.mydemo.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestActivity extends BaseActivity {
-//    private ListView mListView;
+public class AlbumActivity extends BaseActivity {
     private GridView mGridView;
-    private View bottom;
+    private View bottomView;
 
     private MyAdapter adapter;
     private BaseApplication app;
@@ -35,22 +35,47 @@ public class TestActivity extends BaseActivity {
     private DisplayImageOptions options;
     private List<ImageItem> list = new ArrayList<>();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_test, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            if (bottomView.getVisibility() == View.VISIBLE) {
+                bottomView.setVisibility(View.GONE);
+            } else {
+                bottomView.setVisibility(View.VISIBLE);
+            }
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void setContent() {
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_album);
     }
 
     @Override
     public void findViews() {
         mGridView = (GridView) findViewById(R.id.gridview);
-        bottom = findViewById(R.id.bottom_view);
+        bottomView = findViewById(R.id.bottom_view);
     }
 
     @Override
@@ -83,32 +108,6 @@ public class TestActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_test, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            if (bottom.getVisibility() == View.VISIBLE) {
-                bottom.setVisibility(View.GONE);
-            } else {
-                bottom.setVisibility(View.VISIBLE);
-            }
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
 
 
@@ -123,10 +122,7 @@ public class TestActivity extends BaseActivity {
 
 
 
-
-
-
-    private class MyAdapter extends BaseAdapter{
+    private class MyAdapter extends BaseAdapter {
         private LayoutInflater inflater;
         private List<ImageItem> itemList = new ArrayList<>();
 
@@ -171,4 +167,5 @@ public class TestActivity extends BaseActivity {
             return convertView;
         }
     }
+
 }

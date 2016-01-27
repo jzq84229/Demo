@@ -77,5 +77,6 @@
     <string name="title_activity_video_record">Video/VideoRecordActivity</string>
     <string name="title_activity_wave">Animation/WaveActivity</string>
     <string name="title_activity_gif">Gif/GifActivity</string>
+    <string name="title_activity_album">Album/AlbumActivity</string>
 
 </resources>

@@ -1,6 +1,8 @@
 package com.zhang.mydemo.util;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Toast;
@@ -163,8 +165,9 @@ public class DebugUtils{
         println( strBuffer.toString( ) );
     }
     
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static void showStrictMode( ) {
-		if (DebugUtils.Debug.DEBUG_MODE) {
+		if (Debug.DEBUG_MODE) {
 			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
 					.detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
 			StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
@@ -173,12 +176,12 @@ public class DebugUtils{
 	}
 	
 	public static void d(String tag, String msg){
-		if(DebugUtils.Debug.DEBUG_MODE){
+		if(Debug.DEBUG_MODE){
 			Log.d(tag, msg);
 		}
 	}
     
-    public class Debug{
-    	public static final boolean DEBUG_MODE = BuildConfig.LOG_DEBUG;
+    private static class Debug{
+    	public static final boolean DEBUG_MODE = BuildConfig.DEBUG;
     }
 }
