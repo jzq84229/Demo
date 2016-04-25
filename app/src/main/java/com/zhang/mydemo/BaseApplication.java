@@ -29,7 +29,8 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initDebugSetting();
+//        initDebugSetting();
+
         instance = this;
         initImageLoaderConfig();
         initScreenData();
@@ -91,18 +92,18 @@ public class BaseApplication extends Application {
     }
 
     //空间主页图片下载时的options
-//    public DisplayImageOptions getImageOptions() {
-//        if (imageOptions == null) {
-//            imageOptions = new DisplayImageOptions.Builder()
-//                    .showImageOnLoading(R.color.default_image_bg)
-//                    .showImageForEmptyUri(R.color.default_image_bg)
-//                    .showImageOnFail(R.color.default_image_bg)
-//                    .cacheInMemory(true) // 设置下载的图片是否缓存在内存中
-//                    .cacheOnDisk(true) // 设置下载的图片是否缓存在SD卡中
-//                    .bitmapConfig(Bitmap.Config.RGB_565)
-//                    .considerExifParams(true)
-//                    .build();
-//        }
-//        return imageOptions;
-//    }
+    public DisplayImageOptions getImageOptions() {
+        if (imageOptions == null) {
+            imageOptions = new DisplayImageOptions.Builder()
+                    .showImageOnLoading(R.color.default_image_bg)
+                    .showImageForEmptyUri(R.color.default_image_bg)
+                    .showImageOnFail(R.color.default_image_bg)
+                    .cacheInMemory(true) // 设置下载的图片是否缓存在内存中
+                    .cacheOnDisk(true) // 设置下载的图片是否缓存在SD卡中
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                    .considerExifParams(true)
+                    .build();
+        }
+        return imageOptions;
+    }
 }

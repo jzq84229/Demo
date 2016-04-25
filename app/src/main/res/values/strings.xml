@@ -79,5 +79,8 @@
     <string name="title_activity_gif">Gif/GifActivity</string>
     <string name="title_activity_album">Album/AlbumActivity</string>
     <string name="title_activity_test1">Test1Activity</string>
+    <string name="title_activity_gif_drawable">Gif/GifDrawableActivity</string>
+    <string name="title_activity_wheel_view">WheelView/WheelViewActivity</string>
+    <string name="title_activity_separated_list_adapter">Act/SeparatedListAdapterActivity</string>
 
 </resources>
