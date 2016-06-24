@@ -134,7 +134,8 @@ public class QRCodeUtil {
         //生成二维矩阵,编码时指定大小,不要生成了图片以后再进行缩放,这样会模糊导致识别失败
         Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
         hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
-        hints.put(EncodeHintType.MARGIN, 0);
+        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H); //容错级别
+        hints.put(EncodeHintType.MARGIN, 2);    //设置空白边距的宽度, default is 4
         BitMatrix matrix = new MultiFormatWriter().encode(str, BarcodeFormat.QR_CODE, qrWidth, qrHeight, hints);
         int width = matrix.getWidth();
         int height = matrix.getHeight();
