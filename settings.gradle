@@ -1,1 +1,1 @@
-include ':app', ':bdaywidget', ':pullToRefreshlibrary', ':myapplication'
+include ':app', ':bdaywidget', ':pullToRefreshlibrary', ':myapplication', ':citydb'
