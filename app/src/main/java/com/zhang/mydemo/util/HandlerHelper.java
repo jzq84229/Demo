@@ -30,9 +30,9 @@ public class HandlerHelper {
         return mHandler;
     }
 
-    public static void postDelayedRunnOnUI(Runnable var0, long var1) {
+    public static void postDelayedRunnOnUI(Runnable var0, long delayTime) {
         if(var0 != null) {
-            getInstance().postDelayed(var0, var1);
+            getInstance().postDelayed(var0, delayTime);
         }
     }
 
@@ -48,9 +48,9 @@ public class HandlerHelper {
         }
     }
 
-    public void postDelayedRunnOnThead(Runnable var1, long var2) {
+    public void postDelayedRunnOnThead(Runnable var1, long delaytime) {
         if(var1 != null) {
-            this.getTheadHandler().postDelayed(var1, var2);
+            this.getTheadHandler().postDelayed(var1, delaytime);
         }
     }
 
