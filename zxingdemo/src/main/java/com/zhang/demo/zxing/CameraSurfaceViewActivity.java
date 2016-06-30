@@ -12,7 +12,6 @@ import android.view.SurfaceView;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.zhang.demo.zxing.view.CaptureActivity;
 
 import java.io.IOException;
 

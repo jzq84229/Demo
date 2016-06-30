@@ -63,7 +63,8 @@ public class ActionBarUsage extends BaseActivity implements SearchView.OnQueryTe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        ToastUtil.showToast(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT);
+//        ToastUtil.showToast(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT);
+        ToastUtil.showMessage("Selected Item: " + item.getTitle());
         return true;
     }
 
@@ -74,7 +75,8 @@ public class ActionBarUsage extends BaseActivity implements SearchView.OnQueryTe
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        Toast.makeText(this, "Searching for: " + query + "...", Toast.LENGTH_SHORT).show();
+        ToastUtil.showMessage("Searching for: " + query + "...");
+//        Toast.makeText(this, "Searching for: " + query + "...", Toast.LENGTH_SHORT).show();
         return true;
 
     }

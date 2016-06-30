@@ -22,6 +22,7 @@ import android.net.Uri;
 import com.google.zxing.BarcodeFormat;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
@@ -33,9 +34,11 @@ final class DecodeFormatManager {
 
   private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
+  //1D解码
   static final Set<BarcodeFormat> PRODUCT_FORMATS;
   static final Set<BarcodeFormat> INDUSTRIAL_FORMATS;
   private static final Set<BarcodeFormat> ONE_D_FORMATS;
+  //二维码解码
   static final Set<BarcodeFormat> QR_CODE_FORMATS = EnumSet.of(BarcodeFormat.QR_CODE);
   static final Set<BarcodeFormat> DATA_MATRIX_FORMATS = EnumSet.of(BarcodeFormat.DATA_MATRIX);
   static final Set<BarcodeFormat> AZTEC_FORMATS = EnumSet.of(BarcodeFormat.AZTEC);
@@ -55,6 +58,15 @@ final class DecodeFormatManager {
     ONE_D_FORMATS = EnumSet.copyOf(PRODUCT_FORMATS);
     ONE_D_FORMATS.addAll(INDUSTRIAL_FORMATS);
   }
+
+  public static Collection<BarcodeFormat> getQrCodeFormat() {
+    return QR_CODE_FORMATS;
+  }
+
+  public static Collection<BarcodeFormat> getBarCodeFormat() {
+    return ONE_D_FORMATS;
+  }
+  /*
   private static final Map<String,Set<BarcodeFormat>> FORMATS_FOR_MODE;
   static {
     FORMATS_FOR_MODE = new HashMap<>();
@@ -102,5 +114,5 @@ final class DecodeFormatManager {
     }
     return null;
   }
-
+*/
 }

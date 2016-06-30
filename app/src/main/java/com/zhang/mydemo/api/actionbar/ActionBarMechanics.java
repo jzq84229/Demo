@@ -26,7 +26,9 @@ public class ActionBarMechanics extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        ToastUtil.showToast(this, item.getTitle(), Toast.LENGTH_SHORT);
+//        ToastUtil.showToast(this, item.getTitle(), Toast.LENGTH_SHORT);
+        ToastUtil.showMessage(item.getTitle());
         return true;
+
     }
 }

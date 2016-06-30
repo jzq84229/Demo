@@ -163,7 +163,8 @@ public class ActionBarTabs extends BaseActivity implements View.OnClickListener 
 
         @Override
         public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-            ToastUtil.showToast(ActionBarTabs.this, "Reselected!", Toast.LENGTH_SHORT);
+//            ToastUtil.showToast(ActionBarTabs.this, "Reselected!", Toast.LENGTH_SHORT);
+            ToastUtil.showMessage("Reselected!");
         }
     }
 

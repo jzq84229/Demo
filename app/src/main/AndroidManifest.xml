@@ -108,7 +108,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zhang.mydemo.MainActivity" />
@@ -140,8 +139,8 @@
         <activity
             android:name=".simleyparse.SmileyFaceActivity"
             android:label="@string/title_activity_smiley_face"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
@@ -192,7 +191,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zhang.mydemo.MainActivity" />
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
@@ -241,7 +239,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
@@ -319,9 +316,17 @@
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-        <activity android:name=".act.SeparatedListAdapterActivity"
+        <activity
+            android:name=".act.SeparatedListAdapterActivity"
             android:label="@string/title_activity_separated_list_adapter"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".pdf.PDFViewActivity"
+            android:label="@string/title_activity_pdf_view">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />

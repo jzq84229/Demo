@@ -25,8 +25,8 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 
 import com.google.zxing.PlanarYUVLuminanceSource;
-import com.google.zxing.client.android.camera.open.OpenCamera;
-import com.google.zxing.client.android.camera.open.OpenCameraInterface;
+import com.zhang.demo.zxing.qrcode.camera.open.OpenCamera;
+import com.zhang.demo.zxing.qrcode.camera.open.OpenCameraInterface;
 
 import java.io.IOException;
 
@@ -50,13 +50,13 @@ public final class CameraManager {
   private final CameraConfigurationManager configManager;
   private OpenCamera camera;
   private AutoFocusManager autoFocusManager;
-  private Rect framingRect;
-  private Rect framingRectInPreview;
+//  private Rect framingRect;
+//  private Rect framingRectInPreview;
   private boolean initialized;
   private boolean previewing;
-  private int requestedCameraId = OpenCameraInterface.NO_REQUESTED_CAMERA;
-  private int requestedFramingRectWidth;
-  private int requestedFramingRectHeight;
+  private int requestedCameraId = -1;
+//  private int requestedFramingRectWidth;
+//  private int requestedFramingRectHeight;
   /**
    * Preview frames are delivered here, which we pass on to the registered handler. Make sure to
    * clear the handler so it will only receive one message.

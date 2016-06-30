@@ -145,7 +145,8 @@ public class ListViewClickableTextActivity extends BaseActivity {
 
                 @Override
                 public void onClick(View widget) {
-                    ToastUtil.showToast(ListViewClickableTextActivity.this, "点击了" + name, Toast.LENGTH_SHORT);
+                    ToastUtil.showMessage("点击了" + name);
+//                    ToastUtil.showToast(ListViewClickableTextActivity.this, "点击了" + name, Toast.LENGTH_SHORT);
                 }
             }, 0, name.length(), SpannableString.SPAN_INCLUSIVE_EXCLUSIVE);
 
