@@ -53,7 +53,7 @@ public final class DecodeThread extends Thread {
   private Handler handler;
   private final CountDownLatch handlerInitLatch;
 
-  DecodeThread(CaptureActivity activity, int decodeMode) {
+  public DecodeThread(CaptureActivity activity, int decodeMode) {
 
     this.activity = activity;
     handlerInitLatch = new CountDownLatch(1);
@@ -112,7 +112,7 @@ public final class DecodeThread extends Thread {
     Log.i("DecodeThread", "Hints: " + hints);
   }
 
-  Handler getHandler() {
+  public Handler getHandler() {
     try {
       handlerInitLatch.await();
     } catch (InterruptedException ie) {

@@ -17,6 +17,7 @@
 package com.zhang.demo.zxing.qrcode.decode;
 
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -78,7 +79,7 @@ final class DecodeHandler extends Handler {
   private void decode(byte[] data, int width, int height) {
     long start = System.currentTimeMillis();
     Result rawResult = null;
-    PlanarYUVLuminanceSource source = activity.getCameraManager().buildLuminanceSource(data, width, height);
+    PlanarYUVLuminanceSource source = buildLuminanceSource(data, width, height);
     if (source != null) {
       BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
       try {
@@ -108,6 +109,26 @@ final class DecodeHandler extends Handler {
         message.sendToTarget();
       }
     }
+  }
+
+  /**
+   * A factory method to build the appropriate LuminanceSource object based on the format
+   * of the preview buffers, as described by Camera.Parameters.
+   *
+   * @param data A preview frame.
+   * @param width The width of the image.
+   * @param height The height of the image.
+   * @return A PlanarYUVLuminanceSource instance.
+   */
+  public PlanarYUVLuminanceSource buildLuminanceSource(byte[] data, int width, int height) {
+    Rect rect = activity.getmCropRect();
+    if (rect == null) {
+      return null;
+    }
+
+    // Go ahead and assume it's YUV rather than die.
+    return new PlanarYUVLuminanceSource(data, width, height, rect.left, rect.top,
+                                        rect.width(), rect.height(), false);
   }
 
   private static void bundleThumbnail(PlanarYUVLuminanceSource source, Bundle bundle) {

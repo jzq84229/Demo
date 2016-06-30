@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.zhang.demo.zxing.qrcode.CaptureActivity;
 import com.zhang.demo.zxing.qrcode.utils.Util;
-import com.zhang.demo.zxing.view.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 

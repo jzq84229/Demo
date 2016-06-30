@@ -35,6 +35,7 @@ import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
 import com.zhang.demo.zxing.R;
 import com.zhang.demo.zxing.qrcode.CaptureActivity;
+import com.zhang.demo.zxing.qrcode.Constants;
 import com.zhang.demo.zxing.qrcode.camera.CameraManager;
 import com.zhang.demo.zxing.qrcode.decode.DecodeThread;
 
@@ -61,14 +62,13 @@ public final class CaptureActivityHandler extends Handler {
     DONE
   }
 
-  CaptureActivityHandler(CaptureActivity activity,
-                         Collection<BarcodeFormat> decodeFormats,
-                         Map<DecodeHintType,?> baseHints,
-                         String characterSet,
-                         CameraManager cameraManager) {
+  public CaptureActivityHandler(CaptureActivity activity,
+                                CameraManager cameraManager,
+                                int decodeMode) {
     this.activity = activity;
-    decodeThread = new DecodeThread(activity, decodeFormats, baseHints, characterSet,
-        new ViewfinderResultPointCallback(activity.getViewfinderView()));
+//    decodeThread = new DecodeThread(activity, decodeFormats, baseHints, characterSet,
+//        new ViewfinderResultPointCallback(activity.getViewfinderView()));
+    decodeThread = new DecodeThread(activity, decodeMode);
     decodeThread.start();
     state = State.SUCCESS;
 
@@ -81,13 +81,14 @@ public final class CaptureActivityHandler extends Handler {
   @Override
   public void handleMessage(Message message) {
     switch (message.what) {
-      case R.id.restart_preview:
+      case Constants.RESTART_PREVIEW:
         restartPreviewAndDecode();
         break;
-      case R.id.decode_succeeded:
+      case Constants.DECODE_SUCCESSED:
         state = State.SUCCESS;
         Bundle bundle = message.getData();
-        Bitmap barcode = null;
+        activity.handleDecode((Result) message.obj, bundle);
+       /* Bitmap barcode = null;
         float scaleFactor = 1.0f;
         if (bundle != null) {
           byte[] compressedBitmap = bundle.getByteArray(DecodeThread.BARCODE_BITMAP);
@@ -98,18 +99,19 @@ public final class CaptureActivityHandler extends Handler {
           }
           scaleFactor = bundle.getFloat(DecodeThread.BARCODE_SCALED_FACTOR);          
         }
-        activity.handleDecode((Result) message.obj, barcode, scaleFactor);
+        activity.handleDecode((Result) message.obj, barcode, scaleFactor);*/
         break;
-      case R.id.decode_failed:
+      case Constants.DECODE_FAILED:
+
         // We're decoding as fast as possible, so when one decode fails, start another.
         state = State.PREVIEW;
-        cameraManager.requestPreviewFrame(decodeThread.getHandler(), R.id.decode);
+        cameraManager.requestPreviewFrame(decodeThread.getHandler(),  Constants.DECODE);
         break;
-      case R.id.return_scan_result:
+      case Constants.RETURN_SCAN_RESULT:
         activity.setResult(Activity.RESULT_OK, (Intent) message.obj);
         activity.finish();
         break;
-      case R.id.launch_product_query:
+      /*case R.id.launch_product_query:
         String url = (String) message.obj;
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -136,14 +138,14 @@ public final class CaptureActivityHandler extends Handler {
         } catch (ActivityNotFoundException ignored) {
           Log.w(TAG, "Can't find anything to handle VIEW of URI " + url);
         }
-        break;
+        break;*/
     }
   }
 
   public void quitSynchronously() {
     state = State.DONE;
     cameraManager.stopPreview();
-    Message quit = Message.obtain(decodeThread.getHandler(), R.id.quit);
+    Message quit = Message.obtain(decodeThread.getHandler(), Constants.QUIT);
     quit.sendToTarget();
     try {
       // Wait at most half a second; should be enough time, and onPause() will timeout quickly
@@ -153,15 +155,15 @@ public final class CaptureActivityHandler extends Handler {
     }
 
     // Be absolutely sure we don't send any queued up messages
-    removeMessages(R.id.decode_succeeded);
-    removeMessages(R.id.decode_failed);
+    removeMessages(Constants.DECODE_SUCCESSED);
+    removeMessages(Constants.DECODE_FAILED);
   }
 
   private void restartPreviewAndDecode() {
     if (state == State.SUCCESS) {
       state = State.PREVIEW;
-      cameraManager.requestPreviewFrame(decodeThread.getHandler(), R.id.decode);
-      activity.drawViewfinder();
+      cameraManager.requestPreviewFrame(decodeThread.getHandler(), Constants.DECODE);
+//      activity.drawViewfinder();
     }
   }
 

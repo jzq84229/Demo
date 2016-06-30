@@ -41,10 +41,10 @@ public final class CameraManager {
 
   private static final String TAG = CameraManager.class.getSimpleName();
 
-  private static final int MIN_FRAME_WIDTH = 240;
-  private static final int MIN_FRAME_HEIGHT = 240;
-  private static final int MAX_FRAME_WIDTH = 1200; // = 5/8 * 1920
-  private static final int MAX_FRAME_HEIGHT = 675; // = 5/8 * 1080
+//  private static final int MIN_FRAME_WIDTH = 240;
+//  private static final int MIN_FRAME_HEIGHT = 240;
+//  private static final int MAX_FRAME_WIDTH = 1200; // = 5/8 * 1920
+//  private static final int MAX_FRAME_HEIGHT = 675; // = 5/8 * 1080
 
   private final Context context;
   private final CameraConfigurationManager configManager;
@@ -88,14 +88,13 @@ public final class CameraManager {
     if (!initialized) {
       initialized = true;
       configManager.initFromCameraParameters(theCamera);
-      if (requestedFramingRectWidth > 0 && requestedFramingRectHeight > 0) {
-        setManualFramingRect(requestedFramingRectWidth, requestedFramingRectHeight);
-        requestedFramingRectWidth = 0;
-        requestedFramingRectHeight = 0;
-      }
+//      if (requestedFramingRectWidth > 0 && requestedFramingRectHeight > 0) {
+//        setManualFramingRect(requestedFramingRectWidth, requestedFramingRectHeight);
+//        requestedFramingRectWidth = 0;
+//        requestedFramingRectHeight = 0;
+//      }
     }
 
-//    camera.getCamera().setDisplayOrientation(90);
     Camera cameraObject = theCamera.getCamera();
     Camera.Parameters parameters = cameraObject.getParameters();
     String parametersFlattened = parameters == null ? null : parameters.flatten(); // Save these, temporarily
@@ -118,8 +117,8 @@ public final class CameraManager {
         }
       }
     }
-    cameraObject.setPreviewDisplay(holder);
 
+    cameraObject.setPreviewDisplay(holder);
   }
 
   public synchronized boolean isOpen() {
@@ -135,8 +134,8 @@ public final class CameraManager {
       camera = null;
       // Make sure to clear these each time we close the camera, so that any scanning rect
       // requested by intent is forgotten.
-      framingRect = null;
-      framingRectInPreview = null;
+//      framingRect = null;
+//      framingRectInPreview = null;
     }
   }
 
@@ -172,23 +171,23 @@ public final class CameraManager {
    *
    * @param newSetting if {@code true}, light should be turned on if currently off. And vice versa.
    */
-  public synchronized void setTorch(boolean newSetting) {
-    OpenCamera theCamera = camera;
-    if (theCamera != null) {
-      if (newSetting != configManager.getTorchState(theCamera.getCamera())) {
-        boolean wasAutoFocusManager = autoFocusManager != null;
-        if (wasAutoFocusManager) {
-          autoFocusManager.stop();
-          autoFocusManager = null;
-        }
-        configManager.setTorch(theCamera.getCamera(), newSetting);
-        if (wasAutoFocusManager) {
-          autoFocusManager = new AutoFocusManager(context, theCamera.getCamera());
-          autoFocusManager.start();
-        }
-      }
-    }
-  }
+//  public synchronized void setTorch(boolean newSetting) {
+//    OpenCamera theCamera = camera;
+//    if (theCamera != null) {
+//      if (newSetting != configManager.getTorchState(theCamera.getCamera())) {
+//        boolean wasAutoFocusManager = autoFocusManager != null;
+//        if (wasAutoFocusManager) {
+//          autoFocusManager.stop();
+//          autoFocusManager = null;
+//        }
+//        configManager.setTorch(theCamera.getCamera(), newSetting);
+//        if (wasAutoFocusManager) {
+//          autoFocusManager = new AutoFocusManager(context, theCamera.getCamera());
+//          autoFocusManager.start();
+//        }
+//      }
+//    }
+//  }
 
   /**
    * A single preview frame will be returned to the handler supplied. The data will arrive as byte[]
@@ -206,77 +205,73 @@ public final class CameraManager {
     }
   }
 
-  /**
-   * Calculates the framing rect which the UI should draw to show the user where to place the
-   * barcode. This target helps with alignment as well as forces the user to hold the device
-   * far enough away to ensure the image will be in focus.
-   *
-   * @return The rectangle to draw on screen in window coordinates.
-   */
-  public synchronized Rect getFramingRect() {
-    if (framingRect == null) {
-      if (camera == null) {
-        return null;
-      }
-      Point screenResolution = configManager.getScreenResolution();
-      if (screenResolution == null) {
-        // Called early, before init even finished
-        return null;
-      }
-
-      int width = findDesiredDimensionInRange(screenResolution.x, MIN_FRAME_WIDTH, MAX_FRAME_WIDTH);
-      int height = findDesiredDimensionInRange(screenResolution.y, MIN_FRAME_HEIGHT, MAX_FRAME_HEIGHT);
-
-      int leftOffset = (screenResolution.x - width) / 2;
-      int topOffset = (screenResolution.y - height) / 2;
-      framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
-      Log.d(TAG, "Calculated framing rect: " + framingRect);
-    }
-    return framingRect;
-  }
-  
-  private static int findDesiredDimensionInRange(int resolution, int hardMin, int hardMax) {
-    int dim = 5 * resolution / 8; // Target 5/8 of each dimension
-    if (dim < hardMin) {
-      return hardMin;
-    }
-    if (dim > hardMax) {
-      return hardMax;
-    }
-    return dim;
-  }
-
-  /**
-   * Like {@link #getFramingRect} but coordinates are in terms of the preview frame,
-   * not UI / screen.
-   *
-   * @return {@link Rect} expressing barcode scan area in terms of the preview size
-   */
-  public synchronized Rect getFramingRectInPreview() {
-    if (framingRectInPreview == null) {
-      Rect framingRect = getFramingRect();
-      if (framingRect == null) {
-        return null;
-      }
-      Rect rect = new Rect(framingRect);
-      Point cameraResolution = configManager.getCameraResolution();
-      Point screenResolution = configManager.getScreenResolution();
-      if (cameraResolution == null || screenResolution == null) {
-        // Called early, before init even finished
-        return null;
-      }
-      rect.left = rect.left * cameraResolution.x / screenResolution.x;
-      rect.right = rect.right * cameraResolution.x / screenResolution.x;
-      rect.top = rect.top * cameraResolution.y / screenResolution.y;
-      rect.bottom = rect.bottom * cameraResolution.y / screenResolution.y;
+//  /**
+//   * Calculates the framing rect which the UI should draw to show the user where to place the
+//   * barcode. This target helps with alignment as well as forces the user to hold the device
+//   * far enough away to ensure the image will be in focus.
+//   *
+//   * @return The rectangle to draw on screen in window coordinates.
+//   */
+//  public synchronized Rect getFramingRect() {
+//    if (framingRect == null) {
+//      if (camera == null) {
+//        return null;
+//      }
+//      Point screenResolution = configManager.getScreenResolution();
+//      if (screenResolution == null) {
+//        // Called early, before init even finished
+//        return null;
+//      }
+//
+//      int width = findDesiredDimensionInRange(screenResolution.x, MIN_FRAME_WIDTH, MAX_FRAME_WIDTH);
+//      int height = findDesiredDimensionInRange(screenResolution.y, MIN_FRAME_HEIGHT, MAX_FRAME_HEIGHT);
+//
+//      int leftOffset = (screenResolution.x - width) / 2;
+//      int topOffset = (screenResolution.y - height) / 2;
+//      framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
+//      Log.d(TAG, "Calculated framing rect: " + framingRect);
+//    }
+//    return framingRect;
+//  }
+//
+//  private static int findDesiredDimensionInRange(int resolution, int hardMin, int hardMax) {
+//    int dim = 5 * resolution / 8; // Target 5/8 of each dimension
+//    if (dim < hardMin) {
+//      return hardMin;
+//    }
+//    if (dim > hardMax) {
+//      return hardMax;
+//    }
+//    return dim;
+//  }
+//
+//  /**
+//   * Like {@link #getFramingRect} but coordinates are in terms of the preview frame,
+//   * not UI / screen.
+//   *
+//   * @return {@link Rect} expressing barcode scan area in terms of the preview size
+//   */
+//  public synchronized Rect getFramingRectInPreview() {
+//    if (framingRectInPreview == null) {
+//      Rect framingRect = getFramingRect();
+//      if (framingRect == null) {
+//        return null;
+//      }
+//      Rect rect = new Rect(framingRect);
+//      Point cameraResolution = configManager.getCameraResolution();
+//      Point screenResolution = configManager.getScreenResolution();
+//      if (cameraResolution == null || screenResolution == null) {
+//        // Called early, before init even finished
+//        return null;
+//      }
 //      rect.left = rect.left * cameraResolution.y / screenResolution.x;
 //      rect.right = rect.right * cameraResolution.y / screenResolution.x;
 //      rect.top = rect.top * cameraResolution.x / screenResolution.y;
 //      rect.bottom = rect.bottom * cameraResolution.x / screenResolution.y;
-      framingRectInPreview = rect;
-    }
-    return framingRectInPreview;
-  }
+//      framingRectInPreview = rect;
+//    }
+//    return framingRectInPreview;
+//  }
 
   
   /**
@@ -289,60 +284,75 @@ public final class CameraManager {
     requestedCameraId = cameraId;
   }
   
+//  /**
+//   * Allows third party apps to specify the scanning rectangle dimensions, rather than determine
+//   * them automatically based on screen resolution.
+//   *
+//   * @param width The width in pixels to scan.
+//   * @param height The height in pixels to scan.
+//   */
+//  public synchronized void setManualFramingRect(int width, int height) {
+//    if (initialized) {
+//      Point screenResolution = configManager.getScreenResolution();
+//      if (width > screenResolution.x) {
+//        width = screenResolution.x;
+//      }
+//      if (height > screenResolution.y) {
+//        height = screenResolution.y;
+//      }
+//      int leftOffset = (screenResolution.x - width) / 2;
+//      int topOffset = (screenResolution.y - height) / 2;
+//      framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
+//      Log.d(TAG, "Calculated manual framing rect: " + framingRect);
+//      framingRectInPreview = null;
+//    } else {
+//      requestedFramingRectWidth = width;
+//      requestedFramingRectHeight = height;
+//    }
+//  }
+//
+//  /**
+//   * A factory method to build the appropriate LuminanceSource object based on the format
+//   * of the preview buffers, as described by Camera.Parameters.
+//   *
+//   * @param data A preview frame.
+//   * @param width The width of the image.
+//   * @param height The height of the image.
+//   * @return A PlanarYUVLuminanceSource instance.
+//   */
+//  public PlanarYUVLuminanceSource buildLuminanceSource(byte[] data, int width, int height) {
+//    Rect rect = getFramingRectInPreview();
+//    if (rect == null) {
+//      return null;
+//    }
+//
+////    byte[] rotatedData = new byte[data.length];
+////    for (int y = 0; y < height; y++) {
+////      for (int x = 0; x < width; x++)
+////        rotatedData[x * height + height - y - 1] = data[x + y * width];
+////    }
+////    int tmp = width;
+////    width = height;
+////    height = tmp;
+//
+//    // Go ahead and assume it's YUV rather than die.
+//    return new PlanarYUVLuminanceSource(data, width, height, rect.left, rect.top,
+//                                        rect.width(), rect.height(), false);
+//  }
+
   /**
-   * Allows third party apps to specify the scanning rectangle dimensions, rather than determine
-   * them automatically based on screen resolution.
-   *
-   * @param width The width in pixels to scan.
-   * @param height The height in pixels to scan.
-   */
-  public synchronized void setManualFramingRect(int width, int height) {
-    if (initialized) {
-      Point screenResolution = configManager.getScreenResolution();
-      if (width > screenResolution.x) {
-        width = screenResolution.x;
-      }
-      if (height > screenResolution.y) {
-        height = screenResolution.y;
-      }
-      int leftOffset = (screenResolution.x - width) / 2;
-      int topOffset = (screenResolution.y - height) / 2;
-      framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
-      Log.d(TAG, "Calculated manual framing rect: " + framingRect);
-      framingRectInPreview = null;
-    } else {
-      requestedFramingRectWidth = width;
-      requestedFramingRectHeight = height;
-    }
+   * 获取相机分辨率
+   * @return
+     */
+  public Point getCameraResolution() {
+    return configManager.getCameraResolution();
   }
 
-  /**
-   * A factory method to build the appropriate LuminanceSource object based on the format
-   * of the preview buffers, as described by Camera.Parameters.
-   *
-   * @param data A preview frame.
-   * @param width The width of the image.
-   * @param height The height of the image.
-   * @return A PlanarYUVLuminanceSource instance.
-   */
-  public PlanarYUVLuminanceSource buildLuminanceSource(byte[] data, int width, int height) {
-    Rect rect = getFramingRectInPreview();
-    if (rect == null) {
-      return null;
+  public Camera.Size getPreviewSize() {
+    if (null != camera) {
+      return camera.getCamera().getParameters().getPreviewSize();
     }
-
-//    byte[] rotatedData = new byte[data.length];
-//    for (int y = 0; y < height; y++) {
-//      for (int x = 0; x < width; x++)
-//        rotatedData[x * height + height - y - 1] = data[x + y * width];
-//    }
-//    int tmp = width;
-//    width = height;
-//    height = tmp;
-
-    // Go ahead and assume it's YUV rather than die.
-    return new PlanarYUVLuminanceSource(data, width, height, rect.left, rect.top,
-                                        rect.width(), rect.height(), false);
+    return null;
   }
 
 }
