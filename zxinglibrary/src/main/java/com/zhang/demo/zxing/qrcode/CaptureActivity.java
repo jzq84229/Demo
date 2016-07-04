@@ -36,6 +36,11 @@ import com.google.zxing.Result;
 
 import com.zhang.demo.zxing.R;
 import com.zhang.demo.zxing.qrcode.camera.CameraManager;
+import com.zhang.demo.zxing.qrcode.decode.DecodeThread;
+import com.zhang.demo.zxing.qrcode.utils.BeepManager;
+import com.zhang.demo.zxing.qrcode.utils.CaptureActivityHandler;
+import com.zhang.demo.zxing.qrcode.utils.InactivityTimer;
+import com.zhang.demo.zxing.qrcode.view.ViewfinderView;
 
 import java.io.IOException;
 
@@ -54,13 +59,13 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   //摄像头管理类
   private CameraManager cameraManager;
   //handler
-  private com.zhang.demo.zxing.qrcode.utils.CaptureActivityHandler handler;
+  private CaptureActivityHandler handler;
   //activity计时类
-  private com.zhang.demo.zxing.qrcode.utils.InactivityTimer inactivityTimer;
+  private InactivityTimer inactivityTimer;
   //震动类
-  private com.zhang.demo.zxing.qrcode.utils.BeepManager beepManager;
+  private BeepManager beepManager;
   private SurfaceView surfaceView = null;
-  private com.zhang.demo.zxing.qrcode.view.ViewfinderView viewfinderView;
+  private ViewfinderView viewfinderView;
 
   //截取正方形
   private Rect mCropRect = null;
@@ -72,7 +77,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   //是否被inflate
   private boolean isInflate = false;
 
-  com.zhang.demo.zxing.qrcode.view.ViewfinderView getViewfinderView() {
+  ViewfinderView getViewfinderView() {
     return viewfinderView;
   }
 
@@ -97,9 +102,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     //在初始化相机的时候截取正方形
     mViewStub = (ViewStub) findViewById(R.id.viewStub);
     //给activity生命周期计时，当手机不处于充电状态，5分钟关闭该activity
-    inactivityTimer = new com.zhang.demo.zxing.qrcode.utils.InactivityTimer(this);
+    inactivityTimer = new InactivityTimer(this);
     // 扫码成功后震动
-    beepManager = new com.zhang.demo.zxing.qrcode.utils.BeepManager(this);
+    beepManager = new BeepManager(this);
 
   }
 
@@ -115,7 +120,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     //将hanlder设置为空
     handler = null;
 
-    surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+//    surfaceView = (SurfaceView) findViewById(R.id.preview_view);
     //判断是否添加了callback
     if (hasSurface) {
       // The activity was paused but not stopped, so the surface still exists. Therefore
@@ -169,12 +174,12 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
       cameraManager.openDriver(surfaceHolder);
       // Creating the handler starts the preview, which can also throw a RuntimeException.
       if (handler == null) {
-        handler = new com.zhang.demo.zxing.qrcode.utils.CaptureActivityHandler(this, cameraManager, com.zhang.demo.zxing.qrcode.decode.DecodeThread.ALL_MODE);
+        handler = new CaptureActivityHandler(this, cameraManager, DecodeThread.ALL_MODE);
       }
 
       if (!isInflate) {
         FrameLayout layout = (FrameLayout) mViewStub.inflate();
-        viewfinderView = (com.zhang.demo.zxing.qrcode.view.ViewfinderView) layout.findViewById(R.id.viewfinder_view);
+        viewfinderView = (ViewfinderView) layout.findViewById(R.id.viewfinder_view);
         initCrop();
         viewfinderView.setGuideFrame(getmScanRect());
         isInflate = true;
@@ -199,7 +204,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     int cameraHeight = cameraManager.getCameraResolution().x;
 
     //扫描框的为正方形，边长为相机最短边长的1/2
-    int cropLength = Math.min(cameraWidth, cameraHeight) / 2;
+    int cropLength = Math.min(cameraWidth, cameraHeight) * 2 / 3;
 
     /** 获取布局中扫描框的位置信息 */
     int[] location = new int[2];
@@ -243,7 +248,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     builder.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialogInterface, int i) {
-        setResult(com.zhang.demo.zxing.qrcode.Constants.PERMISSION_DENY);
+        setResult(Constants.PERMISSION_DENY);
         finish();
       }
     });

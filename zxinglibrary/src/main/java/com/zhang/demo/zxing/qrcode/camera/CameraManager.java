@@ -45,7 +45,7 @@ public final class CameraManager {
 //  private static final int MAX_FRAME_HEIGHT = 675; // = 5/8 * 1080
 
   private final Context context;
-  private final com.zhang.demo.zxing.qrcode.camera.CameraConfigurationManager configManager;
+  private final CameraConfigurationManager configManager;
   private OpenCamera camera;
   private AutoFocusManager autoFocusManager;
 //  private Rect framingRect;
@@ -63,7 +63,7 @@ public final class CameraManager {
 
   public CameraManager(Context context) {
     this.context = context;
-    this.configManager = new com.zhang.demo.zxing.qrcode.camera.CameraConfigurationManager(context);
+    this.configManager = new CameraConfigurationManager(context);
     previewCallback = new PreviewCallback(configManager);
   }
   
@@ -76,6 +76,7 @@ public final class CameraManager {
   public synchronized void openDriver(SurfaceHolder holder) throws IOException {
     OpenCamera theCamera = camera;
     if (theCamera == null) {
+      //打开后背摄像头，并返回一个OpenCamera对象
       theCamera = OpenCameraInterface.open(requestedCameraId);
       if (theCamera == null) {
         throw new IOException("Camera.open() failed to return object from driver");
@@ -85,7 +86,7 @@ public final class CameraManager {
 
     if (!initialized) {
       initialized = true;
-      configManager.initFromCameraParameters(theCamera);
+      configManager.initFromCameraParameters(theCamera);  // 设置摄像头参数
 //      if (requestedFramingRectWidth > 0 && requestedFramingRectHeight > 0) {
 //        setManualFramingRect(requestedFramingRectWidth, requestedFramingRectHeight);
 //        requestedFramingRectWidth = 0;

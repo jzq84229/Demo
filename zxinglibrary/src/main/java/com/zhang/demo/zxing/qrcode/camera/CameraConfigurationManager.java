@@ -34,6 +34,8 @@ import java.util.List;
 /**
  * A class which deals with reading, parsing, and setting the camera parameters which are used to
  * configure the camera hardware.
+ *
+ * 这个类用于读取、转化、设置相机的硬件参数
  */
 public final class CameraConfigurationManager {
 
@@ -67,6 +69,19 @@ public final class CameraConfigurationManager {
     screenResolution = getDisplaySize(display);
     Log.i(TAG, "Scrren resolution:" + screenResolution);
 
+
+      /**
+       * 屏幕方向：在Android系统中，屏幕的左上角是坐标系统的原点（0,0）坐标。原点向右延伸是X轴正方向，原点向下延伸是Y轴正方向。
+       * 相机传感器方向：手机相机的图像数据都是来自于摄像头硬件的图像传感器，这个传感器在被固定到手机上后有一个默认的取景方向，如下图2所示，
+       *        坐标原点位于手机横放时的左上角，即与横屏应用的屏幕X方向一致。换句话说，与竖屏应用的屏幕X方向呈90度角。
+       * 相机的预览方向：由于手机屏幕可以360度旋转，为了保证用户无论怎么旋转手机都能看到“正确”的预览画面（这个“正确”是指显示在UI预览界面的画面与人眼看到的眼前的画面是一致的），
+       *        Android系统底层根据当前手机屏幕的方向对图像传感器采集到的数据进行了旋转处理，然后才送给显示系统，因此可以保证预览画面始终“正确”。
+       *        在相机API中可以通过setDisplayOrientation()设置相机预览方向。在默认情况下，这个值为0，与图像传感器一致。因此对于横屏应用来说，由于屏幕方向和预览方向一致，预览图像不会颠倒90度。
+       *        但是对于竖屏应用，屏幕方向和预览方向垂直，所以会出现颠倒90度现象。为了得到正确的预览画面，必须通过API将相机的预览方向旋转90，保持与屏幕方向一致，
+       * 相机的拍照方向：当点击拍照按钮，拍摄的照片是由图像传感器采集到的数据直接存储到SDCard上产生的，因此，相机的拍照方向与传感器方向是一致的。
+       *
+       * 以上说明见：https://gold.xitu.io/entry/56aa36fad342d300542e7510
+       */
     /** 因为换成了竖屏显示，所以不替换屏幕宽高得出的预览图是变形的 */
     Point screenResolutionForCamera = new Point();
     screenResolutionForCamera.x = screenResolution.x;
@@ -80,7 +95,8 @@ public final class CameraConfigurationManager {
     Log.i(TAG, "Camera resolution x:" + cameraResolution.x);
     Log.i(TAG, "Camera resolution y:" + cameraResolution.y);
 
- /*   int displayRotation = display.getRotation();
+ /*
+    int displayRotation = display.getRotation();
     int cwRotationFromNaturalToDisplay;
     switch (displayRotation) {
       case Surface.ROTATION_0:
@@ -112,9 +128,8 @@ public final class CameraConfigurationManager {
     if (camera.getFacing() == CameraFacing.FRONT) {
       cwRotationFromNaturalToCamera = (360 - cwRotationFromNaturalToCamera) % 360;
       Log.i(TAG, "Front camera overriden to: " + cwRotationFromNaturalToCamera);
-    }*/
+    }
 
-    /*
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
     String overrideRotationString;
     if (camera.getFacing() == CameraFacing.FRONT) {
@@ -126,9 +141,8 @@ public final class CameraConfigurationManager {
       Log.i(TAG, "Overriding camera manually to " + overrideRotationString);
       cwRotationFromNaturalToCamera = Integer.parseInt(overrideRotationString);
     }
-     */
 
-  /*  cwRotationFromDisplayToCamera =
+    cwRotationFromDisplayToCamera =
         (360 + cwRotationFromNaturalToCamera - cwRotationFromNaturalToDisplay) % 360;
     Log.i(TAG, "Final display orientation: " + cwRotationFromDisplayToCamera);
     if (camera.getFacing() == CameraFacing.FRONT) {
@@ -156,7 +170,8 @@ public final class CameraConfigurationManager {
     } else {
       previewSizeOnScreen = new Point(bestPreviewSize.y, bestPreviewSize.x);
     }
-    Log.i(TAG, "Preview size on screen: " + previewSizeOnScreen);*/
+    Log.i(TAG, "Preview size on screen: " + previewSizeOnScreen);
+    */
   }
 
   private Point getDisplaySize(final Display display) {
@@ -330,6 +345,7 @@ public final class CameraConfigurationManager {
       cameraResolution.y = afterSize.height;
     }
 
+      //设置预览方向旋转90度
     theCamera.setDisplayOrientation(90);
   }
 

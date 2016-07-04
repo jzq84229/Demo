@@ -42,27 +42,29 @@ public final class OpenCameraInterface {
    */
   public static OpenCamera open(int cameraId) {
 
+    //获取摄像头数量
     int numCameras = Camera.getNumberOfCameras();
     if (numCameras == 0) {
       Log.w(TAG, "No cameras!");
       return null;
     }
 
+    //是否指定要打开的摄像头
     boolean explicitRequest = cameraId >= 0;
 
     Camera.CameraInfo selectedCameraInfo = null;
     int index;
-    if (explicitRequest) {
+    if (explicitRequest) {  //有指定要使用的摄像头
       index = cameraId;
       selectedCameraInfo = new Camera.CameraInfo();
-      Camera.getCameraInfo(index, selectedCameraInfo);
-    } else {
+      Camera.getCameraInfo(index, selectedCameraInfo);    //获取指定位置摄像头的信息
+    } else {  //没有指定使用的摄像头
       index = 0;
-      while (index < numCameras) {
+      while (index < numCameras) {  //循环所有摄像头
         Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
         Camera.getCameraInfo(index, cameraInfo);
         CameraFacing reportedFacing = CameraFacing.values()[cameraInfo.facing];
-        if (reportedFacing == CameraFacing.BACK) {
+        if (reportedFacing == CameraFacing.BACK) {  //若摄像头为背后摄像头则赋值给selectedCameraInfo并退出循环
           selectedCameraInfo = cameraInfo;
           break;
         }
@@ -71,7 +73,7 @@ public final class OpenCameraInterface {
     }
 
     Camera camera;
-    if (index < numCameras) {
+    if (index < numCameras) { //若选中的摄像头位置小于摄像头总数，打开摄像头
       Log.i(TAG, "Opening camera #" + index);
       camera = Camera.open(index);
     } else {

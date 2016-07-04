@@ -376,6 +376,7 @@
         </activity>
         <activity android:name=".qrcode.GenrateQRActivity" />
         <activity android:name=".qrcode.CameraSurfaceViewActivity" />
+        <activity android:name=".droidplugin.DroidPluginActivity"></activity>
     </application>
 
 </manifest>

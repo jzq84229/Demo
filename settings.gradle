@@ -1,1 +1,1 @@
-include ':app', ':bdaywidget', ':pullToRefreshlibrary', ':myapplication', ':citydb', ':zxinglibrary'
+include ':app', ':bdaywidget', ':pullToRefreshlibrary', ':myapplication', ':citydb', ':zxinglibrary', 'DroidPluginLibrary'
