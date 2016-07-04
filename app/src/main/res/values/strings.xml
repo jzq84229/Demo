@@ -83,5 +83,6 @@
     <string name="title_activity_wheel_view">WheelView/WheelViewActivity</string>
     <string name="title_activity_separated_list_adapter">Act/SeparatedListAdapterActivity</string>
     <string name="title_activity_pdf_view">Pdf/PDFViewActivity</string>
+    <string name="title_activity_qrcode_main">QrcodeMainActivity</string>
 
 </resources>

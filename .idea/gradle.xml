@@ -13,7 +13,7 @@
             <option value="$PROJECT_DIR$/citydb" />
             <option value="$PROJECT_DIR$/myapplication" />
             <option value="$PROJECT_DIR$/pullToRefreshlibrary" />
-            <option value="$PROJECT_DIR$/zxingdemo" />
+            <option value="$PROJECT_DIR$/zxinglibrary" />
           </set>
         </option>
         <option name="myModules">
@@ -24,7 +24,7 @@
             <option value="$PROJECT_DIR$/citydb" />
             <option value="$PROJECT_DIR$/myapplication" />
             <option value="$PROJECT_DIR$/pullToRefreshlibrary" />
-            <option value="$PROJECT_DIR$/zxingdemo" />
+            <option value="$PROJECT_DIR$/zxinglibrary" />
           </set>
         </option>
       </GradleProjectSettings>

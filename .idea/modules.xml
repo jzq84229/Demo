@@ -8,7 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/citydb/citydb.iml" filepath="$PROJECT_DIR$/citydb/citydb.iml" />
       <module fileurl="file://$PROJECT_DIR$/myapplication/myapplication.iml" filepath="$PROJECT_DIR$/myapplication/myapplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/pullToRefreshlibrary/pullToRefreshlibrary.iml" filepath="$PROJECT_DIR$/pullToRefreshlibrary/pullToRefreshlibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/zxingdemo/zxingdemo.iml" filepath="$PROJECT_DIR$/zxingdemo/zxingdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zxinglibrary/zxinglibrary.iml" filepath="$PROJECT_DIR$/zxinglibrary/zxinglibrary.iml" />
     </modules>
   </component>
 </project>

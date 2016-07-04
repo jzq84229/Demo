@@ -1,1 +1,1 @@
-include ':app', ':bdaywidget', ':pullToRefreshlibrary', ':myapplication', ':citydb', ':zxingdemo'
+include ':app', ':bdaywidget', ':pullToRefreshlibrary', ':myapplication', ':citydb', ':zxinglibrary'
