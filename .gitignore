@@ -3,3 +3,9 @@
 *.iml
 /local.properties
 /build
+/DroidPluginLibrary/build/
+/citydb/build/
+/bdaywidget/build/
+/myapplication/build/
+/pullToRefreshlibrary/build/
+/zxinglibrary/build/
