@@ -22,6 +22,10 @@ def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
 
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
 Properties props = new Properties();
 props.load(project.rootProject.file('signing.properties').newDataInputStream())
 
