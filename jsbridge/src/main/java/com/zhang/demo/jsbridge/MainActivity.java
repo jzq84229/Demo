@@ -47,13 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        webView.setWebViewClient();
 
         webView.loadUrl("file:///android_asset/demo.html");
-//        webView.loadUrl("http://192.168.1.40/zz2/jl.html");
 
-
-        webView.registerHandler("getUserInfo", new BridgeHandler() {
+        webView.registerHandler("submitFromWeb", new BridgeHandler() {
 
             @Override
             public void handler(String data, CallBackFunction function) {

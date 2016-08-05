@@ -85,5 +85,6 @@
     <string name="title_activity_pdf_view">Pdf/PDFViewActivity</string>
     <string name="title_activity_qrcode_main">QrcodeMainActivity</string>
     <string name="title_activity_drag_view">Gesture/DragViewActivity</string>
+    <string name="title_activity_my_surface_view">Gesture/MySurfaceViewActivity</string>
 
 </resources>

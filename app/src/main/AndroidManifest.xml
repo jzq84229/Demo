@@ -376,11 +376,21 @@
         </activity>
         <activity android:name=".qrcode.GenrateQRActivity" />
         <activity android:name=".qrcode.CameraSurfaceViewActivity" />
-        <!--<activity android:name=".droidplugin.DroidPluginActivity" />-->
-        <activity android:name=".gesture.DragViewActivity"
+        <!-- <activity android:name=".droidplugin.DroidPluginActivity" /> -->
+        <activity
+            android:name=".gesture.DragViewActivity"
             android:label="@string/title_activity_drag_view">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".gesture.MySurfaceViewActivity"
+            android:label="@string/title_activity_my_surface_view">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.zhang.mydemo.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
