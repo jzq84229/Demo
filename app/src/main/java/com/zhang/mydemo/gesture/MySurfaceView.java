@@ -212,22 +212,17 @@ public class MySurfaceView extends SurfaceView implements
                 mStartPoint.set(event.getX(), event.getY());
                 mStatus = DRAG;
                 break;
-
             case MotionEvent.ACTION_POINTER_DOWN:
                 float distance = spacing(event);
                 if (distance > 10f) {
-
                     mStatus = ZOOM;
                     mStartDistance = distance;
                 }
-
                 break;
-
             case MotionEvent.ACTION_MOVE:
                 if (mStatus == DRAG) {
                     dragAction(event);
                 } else {
-
                     if (event.getPointerCount() == 1)
                         return true;
                     zoomAcition(event);
@@ -240,7 +235,6 @@ public class MySurfaceView extends SurfaceView implements
             default:
                 break;
         }
-
         return true;
     }
 

@@ -13,11 +13,13 @@ public class MySurfaceViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_surface_view);
+
+        init();
     }
 
     private void init() {
         mySurfaceView = (MySurfaceView) findViewById(R.id.my_surface_view);
-        mySurfaceView.setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
+        mySurfaceView.setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.person_detail_bg));
 
     }
 }
