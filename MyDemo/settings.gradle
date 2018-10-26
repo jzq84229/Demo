@@ -1,0 +1,1 @@
+include ':app', ':bdaywidget', ':pullToRefreshlibrary', ':myapplication', ':citydb', ':zxinglibrary', ':mvpdemo', ':jsbridge', ':btibridge', 'DroidPluginLibrary'

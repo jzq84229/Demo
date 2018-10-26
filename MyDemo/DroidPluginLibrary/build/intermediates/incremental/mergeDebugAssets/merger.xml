@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/jun/github/jzq84229/MyDemo/DroidPluginLibrary/assets"/><source path="/Users/jun/github/jzq84229/MyDemo/DroidPluginLibrary/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/jun/github/jzq84229/MyDemo/DroidPluginLibrary/build-types/debug/assets"/></dataSet></merger>

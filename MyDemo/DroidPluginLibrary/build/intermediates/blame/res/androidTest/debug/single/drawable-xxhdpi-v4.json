@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/jun/github/jzq84229/MyDemo/DroidPluginLibrary/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/plugin_activity_loading_bitmap.9.png",
+        "source": "/Users/jun/github/jzq84229/MyDemo/DroidPluginLibrary/build/intermediates/bundles/debug/res/drawable-xxhdpi-v4/plugin_activity_loading_bitmap.9.png"
+    },
+    {
+        "merged": "/Users/jun/github/jzq84229/MyDemo/DroidPluginLibrary/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/plugin_activity_loading.xml",
+        "source": "/Users/jun/github/jzq84229/MyDemo/DroidPluginLibrary/build/intermediates/bundles/debug/res/drawable-xxhdpi-v4/plugin_activity_loading.xml"
+    }
+]

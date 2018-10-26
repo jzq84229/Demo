@@ -1,2 +1,0 @@
-Android MVP架构demo，并使用RxJava实现异步请求网络数据
-具体实现可参考[一步一步实现Android的MVP框架](http://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&mid=2653577546&idx=1&sn=e10be159645a3aa8f6d6f209420fb412&scene=5&srcid=0730F62e1kP2vhaS3YuNLzKk#rd)
