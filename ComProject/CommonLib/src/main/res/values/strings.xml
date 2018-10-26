@@ -1,0 +1,4 @@
+<resources>
+    <string name="time_yesterday">昨天</string>
+    <string name="util_network_error">没有可用网络</string>
+</resources>

@@ -1,0 +1,7 @@
+include ':app', ':ImagePicker', ':HttpReq', ':SophixLib', ':MyPatchLib', ':MyAnnotation'
+
+project(':ImagePicker').projectDir = new File('ThirdPart/ImagePicker')
+project(':HttpReq').projectDir = new File('ThirdPart/HttpReq')
+project(':SophixLib').projectDir = new File('ThirdPart/SophixLib')
+project(':MyPatchLib').projectDir = new File('ThirdPart/MyPatchLib')
+project(':MyAnnotation').projectDir = new File('ThirdPard/MyAnnotation')

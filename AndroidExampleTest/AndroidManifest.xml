@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zhang.example"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+    
+    <supports-screens android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:resizeable="true"
+        android:anyDensity="true"/>
+    
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+	<!--使用网络功能所需权限  -->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+	<!-- SDK离线地图和cache功能需要读写外部存储器 -->
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+	<!-- 获取设置信息和详情页直接拨打电话需要以下权限  -->
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+	<!-- 使用定位功能所需权限,demo已集成百度定位SDK,不使用定位功能可去掉以下6项 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" ></uses-permission>
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" ></permission>
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" ></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" ></uses-permission>
+    <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" ></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> 
+	<uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name">
+        
+        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"></service>
+        <uses-library android:name="com.google.android.maps"/>
+        
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TestActivity" android:label="Android Example/TestActivity">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.TEST"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".VedioRecorderActivity" android:label="Android Example/VedioRecorderActivity" android:screenOrientation="portrait">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.TEST"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".AudioRecorderActivity" android:label="Android Example/AudioRecorderActivity" android:screenOrientation="portrait">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.TEST"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".map.GoogleMapActivity" android:label="Android Example/GoogleMapActivity">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.TEST"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".map.BaiduMapActivity" android:label="Android Example/BaiduMapActivity" android:screenOrientation="sensor" android:configChanges="orientation|keyboardHidden">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.TEST"/> 
+                <category android:name="android.intent.category.SAMPLE_CODE"/> 
+            </intent-filter>
+        </activity>
+        <activity android:name="com.zhang.example.map.BaiduMapMyLocationActivity" android:label="Android Example/BaiduMapMyLocationActivity" android:screenOrientation="sensor" android:configChanges="orientation|keyboardHidden">
+		    <intent-filter >
+		        <action android:name="android.intent.action.MAIN"/>
+		        <category android:name="android.intent.category.TEST"/>
+		        <category android:name="android.intent.category.SAMPLE_CODE"/>
+		    </intent-filter>
+		</activity>
+		<activity android:name=".imageViewLoader.ImageViewLoaderActivity" android:label="Android Example/ImageViewLoaderActivity" >
+		    <intent-filter >
+		        <action android:name="android.intent.action.MAIN"/>
+		        <category android:name="android.intent.category.TEST"/>
+		        <category android:name="android.intent.category.SAMPLE_CODE"/>
+		    </intent-filter>
+		</activity>
+		<activity android:name=".guideview.GuideActivity" android:label="Android Example/GuideActivity">
+		    <intent-filter >
+		        <action android:name="android.intent.action.MAIN"/>
+		        <category android:name="android.intent.category.TEST"/>
+		        <category android:name="android.intent.category.SAMPLE_CODE"/>
+		    </intent-filter>
+		</activity>
+		<activity android:name=".guideview.OtherActivity"></activity>
+		<activity android:name=".horizontallistview.HorizontalListViewActivity" android:label="Android Example/HorizontalListViewActivity" android:screenOrientation="landscape">
+		    <intent-filter >
+		        <action android:name="android.intent.action.MAIN"/>
+		        <category android:name="android.intent.category.TEST"/>
+		        <category android:name="android.intent.category.SAMPLE_CODE"/>
+		    </intent-filter>
+		</activity>
+		<activity android:name=".IBMPhotoPhun" android:label="Android Example/IBMPhotoPhun" android:screenOrientation="portrait">
+		    <intent-filter >
+		        <action android:name="android.intent.action.MAIN"/>
+		        <category android:name="android.intent.category.TEST"/>
+		        <category android:name="android.intent.category.SAMPLE_CODE"/>
+		    </intent-filter>
+		</activity>
+		
+		<activity android:name=".bitmapFun.ui.ImageGridActivity" android:label="Android Example/ImageGridActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme">
+		    <intent-filter >
+		        <action android:name="android.intent.action.MAIN"/>
+		        <category android:name="android.intent.category.TEST"/>
+		        <category android:name="android.intent.category.SAMPLE_CODE"/>
+		    </intent-filter>
+		</activity>
+		<activity android:name=".bitmapFun.ui.ImageDetailActivity" 
+		    android:parentActivityName=".bitmapFun.ui.ImageGridActivity">
+		    <meta-data android:name="android.support.PARENT_ACTIVITY"
+		        android:value=".bitmapFun.ui.ImageGridActivity" />
+		</activity>
+		
+		<activity android:name=".ExpandActivity" android:label="Android Example/ExpandActivity" android:screenOrientation="portrait">
+		    <intent-filter >
+		        <action android:name="android.intent.action.MAIN"/>
+		        <category android:name="android.intent.category.TEST"/>
+		        <category android:name="android.intent.category.SAMPLE_CODE"/>
+		    </intent-filter>
+		</activity>
+		<activity android:name=".service.ServiceDemo" android:label="Android Example/ServiceDemo" android:screenOrientation="portrait">
+		    <intent-filter >
+		        <action android:name="android.intent.action.MAIN"/>
+		        <category android:name="android.intent.category.TEST"/>
+		        <category android:name="android.intent.category.SAMPLE_CODE"/>
+		    </intent-filter>
+		</activity>
+        <service android:name=".service.MyService"></service>
+		<activity android:name=".ExpandTextViewActivity" android:label="Android Example/ExpandTextViewActivity" android:screenOrientation="portrait">
+		    <intent-filter >
+		        <action android:name="android.intent.action.MAIN"/>
+		        <category android:name="android.intent.category.TEST"/>
+		        <category android:name="android.intent.category.SAMPLE_CODE"/>
+		    </intent-filter>
+		</activity>
+		<activity android:name=".viewpage.ViewPageActivity" android:label="Android Example/ViewPageActivity" android:screenOrientation="portrait">
+		    <intent-filter >
+		        <action android:name="android.intent.action.MAIN"/>
+		        <category android:name="android.intent.category.TEST"/>
+		        <category android:name="android.intent.category.SAMPLE_CODE"/>
+		    </intent-filter>
+		</activity>
+    
+        <activity android:name=".TextViewTestActivity" android:label="Android Example/TextViewTestActivity">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.TEST"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+		
+		
+    </application>
+
+</manifest>

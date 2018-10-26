@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/message_layout_mask"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/message_editor_hight"
+    android:background="@color/bg_warning"
+    android:gravity="center"
+    android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/layout_mask_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:src="@drawable/ic_chat_newmsg_alram" />
+
+    <TextView
+        android:id="@+id/layout_mask_text"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical"
+        android:paddingLeft="20.0dip"
+        android:text="新消息到达,点击查看"
+        android:textColor="@color/text_warning"
+        android:textSize="16.0sp" />
+</LinearLayout>

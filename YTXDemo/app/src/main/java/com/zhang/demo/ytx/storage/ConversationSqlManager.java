@@ -1,0 +1,115 @@
+package com.zhang.demo.ytx.storage;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.text.TextUtils;
+
+import com.yuntongxun.ecsdk.ECMessage;
+import com.zhang.demo.ytx.common.utils.LogUtil;
+
+/**
+ * 会话消息数据库管理
+ * Created by Administrator on 2016/7/14.
+ */
+public class ConversationSqlManager extends AbstractSQLManager {
+    private static ConversationSqlManager instance;
+
+    private ConversationSqlManager() {
+        super();
+    }
+
+    public static ConversationSqlManager getInstance() {
+        if (instance == null) {
+            instance = new ConversationSqlManager();
+        }
+        return instance;
+    }
+
+    /**
+     * 查询所有会话，按时间倒序
+     * @return      Cursor
+     */
+    public static Cursor getConversationCursor() {
+        try {
+            String sql = "SELECT unreadCount, im_thread.type, sendStatus, dateTime, sessionId, text, username ,name ,im_thread.contactid ,isnotice\n"
+                    + " FROM im_thread \n"
+                    + " LEFT JOIN contacts ON im_thread.sessionId = contacts.contact_id \n"
+                    + " LEFT JOIN groups2 ON im_thread.sessionId = groups2.groupid order by dateTime desc;";
+            return getInstance().sqliteDB().rawQuery(sql, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 通过会话ID查找消息数据库主键
+     * @param sessionId     会话ID
+     * @return
+     */
+    public static long querySessionIdForBySessionId(String sessionId) {
+        Cursor cursor = null;
+        long threadId = 0;
+        if (sessionId != null) {
+            String where = IThreadColumn.THREAD_ID + " = '" + sessionId + "'";
+            try {
+                cursor = getInstance().sqliteDB().query(DatabaseHelper.TABLES_NAME_IM_SESSION, null, where, null, null, null, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    if (cursor.moveToFirst()) {
+                        threadId = cursor.getLong(cursor.getColumnIndexOrThrow(IThreadColumn.ID));
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
+                    cursor = null;
+                }
+            }
+        }
+        return threadId;
+    }
+
+    /**
+     * 根据会话ID，删除会话
+     * @param contactId     会话ID
+     */
+    public static void delSession(String contactId) {
+        String where = IThreadColumn.THREAD_ID + " = '" + contactId + "' ";
+        getInstance().sqliteDB().delete(DatabaseHelper.TABLES_NAME_IM_SESSION , where, null);
+    }
+
+    /**
+     * 生成一个新的会话消息
+     * @param msg
+     * @return
+     */
+    public static long insertSessionRecord(ECMessage msg) {
+        if (msg == null || TextUtils.isEmpty(msg.getSessionId())) {
+            throw new IllegalArgumentException("insert thread table "
+                    + DatabaseHelper.TABLES_NAME_IM_SESSION
+                    + "error , that Argument ECMessage:" + msg);
+        }
+        long row = -1;
+        ContentValues values = new ContentValues();
+        try {
+            values.put(IThreadColumn.THREAD_ID, msg.getSessionId());
+            values.put(IThreadColumn.DATE, System.currentTimeMillis());
+            values.put(IThreadColumn.UNREAD_COUNT, 0);
+            values.put(IThreadColumn.CONTACT_ID, msg.getForm());
+            row = getInstance().sqliteDB().insertOrThrow(
+                    DatabaseHelper.TABLES_NAME_IM_SESSION, null, values);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            LogUtil.e(LOG_TAG + " " + ex.toString());
+        } finally {
+            if (values != null) {
+                values.clear();
+                values = null;
+            }
+        }
+        return row;
+    }
+}

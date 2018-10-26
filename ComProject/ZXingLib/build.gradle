@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+
+def cfg = rootProject.ext.android
+def dependencie = rootProject.ext.dependencies
+android {
+    compileSdkVersion cfg.compileSdkVersion
+    buildToolsVersion cfg.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+//    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile dependencie.appcompatV7
+    testCompile dependencie.junit
+    compile dependencie.zxing
+}

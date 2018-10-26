@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Demo.iml" filepath="$PROJECT_DIR$/Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdPart/HttpReq/HttpReq.iml" filepath="$PROJECT_DIR$/ThirdPart/HttpReq/HttpReq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdPart/ImagePicker/ImagePicker.iml" filepath="$PROJECT_DIR$/ThirdPart/ImagePicker/ImagePicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdPard/MyAnnotation/MyAnnotation.iml" filepath="$PROJECT_DIR$/ThirdPard/MyAnnotation/MyAnnotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdPart/MyPatchLib/MyPatchLib.iml" filepath="$PROJECT_DIR$/ThirdPart/MyPatchLib/MyPatchLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdPart/SophixLib/SophixLib.iml" filepath="$PROJECT_DIR$/ThirdPart/SophixLib/SophixLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>

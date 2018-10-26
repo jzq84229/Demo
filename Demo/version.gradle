@@ -1,0 +1,17 @@
+ext {
+    android = [
+            compileSdkVersion: 25,
+            buildToolsVersion: '25.0.3',
+            minSdkVersion    : 15,
+            targetSdkVersion : 25,
+            javaVersion      : JavaVersion.VERSION_1_8
+    ]
+
+    depsVersion = [
+            junitVersion:'4.12',
+            supportVersion:'25.3.0',
+
+            alicloudAndroidHotfixVersion:'3.1.0',
+            photoViewVersion:'1.2.4',
+    ]
+}

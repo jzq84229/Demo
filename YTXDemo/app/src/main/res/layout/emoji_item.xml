@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="45.0dp"
+        android:layout_margin="2dp"
+        android:background="@drawable/smiley_item_bg2"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+
+        <ImageView
+            android:id="@+id/emoji_id"
+            android:layout_width="30dp"
+            android:layout_height="31dp"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+</LinearLayout>
