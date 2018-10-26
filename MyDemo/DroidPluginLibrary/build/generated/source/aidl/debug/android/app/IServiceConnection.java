@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /Users/jun/github/jzq84229/MyDemo/DroidPluginLibrary/src/android/app/IServiceConnection.aidl
+ * Original file: /Users/jun/github/jzq84229/MyDemo/MyDemo/DroidPluginLibrary/src/android/app/IServiceConnection.aidl
  */
 package android.app;
 /** @hide */

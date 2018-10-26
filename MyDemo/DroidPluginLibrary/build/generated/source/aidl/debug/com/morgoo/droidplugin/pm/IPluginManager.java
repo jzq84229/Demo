@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /Users/jun/github/jzq84229/MyDemo/DroidPluginLibrary/src/com/morgoo/droidplugin/pm/IPluginManager.aidl
+ * Original file: /Users/jun/github/jzq84229/MyDemo/MyDemo/DroidPluginLibrary/src/com/morgoo/droidplugin/pm/IPluginManager.aidl
  */
 package com.morgoo.droidplugin.pm;
 /**
