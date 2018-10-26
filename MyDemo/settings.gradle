@@ -1,1 +1,5 @@
 include ':app', ':bdaywidget', ':pullToRefreshlibrary', ':myapplication', ':citydb', ':zxinglibrary', ':mvpdemo', ':jsbridge', ':btibridge', 'DroidPluginLibrary'
+
+//include "ComProject"
+//project(':ComProject').projectDir = new File('../ComProject')
+//include(':ComProject:CommonLib')
