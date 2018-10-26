@@ -1,5 +1,5 @@
-include ':app', ':bdaywidget', ':pullToRefreshlibrary', ':myapplication', ':citydb', ':zxinglibrary', ':mvpdemo', ':jsbridge', ':btibridge', 'DroidPluginLibrary'
+include ':app', ':bdaywidget', ':myapplication', ':citydb', ':mvpdemo', ':jsbridge', ':btibridge'
 
-//include "ComProject"
-//project(':ComProject').projectDir = new File('../ComProject')
-//include(':ComProject:CommonLib')
+include "ComProject"
+project(':ComProject').projectDir = new File('../ComProject')
+include(':ComProject:CommonLib', ':ComProject:DroidPluginLib', ':ComProject:PullToRefreshLib', ":ComProject:ZXingLib")
