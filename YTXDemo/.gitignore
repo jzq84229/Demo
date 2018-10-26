@@ -6,3 +6,6 @@
 /captures
 .idea/
 /app/build/
+/gradle/
+/gradlew
+/gradlew.bat
